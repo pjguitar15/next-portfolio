@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.select-light-green::selection {
+  background-color: #6ceaae; /* Change this color as needed */
+  color: black; /* Change this color as needed */
+}
