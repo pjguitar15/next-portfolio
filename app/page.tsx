@@ -1,4 +1,5 @@
 import AboutMe from '@/components/home-sections/AboutMe'
+import Contact from '@/components/home-sections/Contact'
 import Hero from '@/components/home-sections/Hero'
 import MyProjectsSection from '@/components/home-sections/MyProjectsSection'
 import MySkillsSection from '@/components/home-sections/MySkillsSection'
@@ -11,6 +12,7 @@ const page = () => {
       <AboutMe />
       <MySkillsSection />
       <MyProjectsSection />
+      <Contact />
     </main>
   )
 }

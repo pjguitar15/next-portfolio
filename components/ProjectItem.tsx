@@ -10,6 +10,7 @@ const ProjectItem = ({
   tags,
   imagePath,
   projectLink,
+  githubLink,
 }: {
   keyItem: number
   title: string
@@ -17,6 +18,7 @@ const ProjectItem = ({
   tags: string[]
   imagePath?: string
   projectLink?: string
+  githubLink?: string
 }) => {
   return (
     <>
@@ -52,8 +54,16 @@ const ProjectItem = ({
               {description}
             </p>
             <div className='flex gap-3'>
-              <MySmallButton title='Go to Project' link={projectLink || '/'} />
-              <MySmallButton title='View Github' link='/' />
+              <MySmallButton
+                title='Go to Project'
+                link={projectLink || '/'}
+                icon='externalLinkAlt'
+              />
+              <MySmallButton
+                title='Github Repo'
+                link={githubLink || '/'}
+                icon='github'
+              />
             </div>
           </div>
         </div>
@@ -61,11 +71,21 @@ const ProjectItem = ({
         <div className='lg:flex lg:flex-row-reverse'>
           {/* lg:w-6/12 flex */}
           <div className='flex lg:w-1/2 overflow-hidden cursor-pointer hover:brightness-75 transition duration-300'>
-            <img
-              className='object-cover hover:scale-105 transition duration-300 ease-in-out'
-              src='https://media.geeksforgeeks.org/wp-content/uploads/20230519095635/How-to-Deploy-React-App-on-Netlify-Using-Github.png'
-              alt='test'
-            />
+            {imagePath ? (
+              <Image
+                className='object-cover w-full'
+                src={imagePath}
+                alt=''
+                width={500}
+                height={500}
+              />
+            ) : (
+              <img
+                className='object-cover hover:scale-105 transition duration-300 ease-in-out'
+                src='https://media.geeksforgeeks.org/wp-content/uploads/20230519095635/How-to-Deploy-React-App-on-Netlify-Using-Github.png'
+                alt='test'
+              />
+            )}
           </div>
           <div className='lg:w-1/2 flex flex-col justify-center py-10 lg:py-14 lg:pr-7'>
             <h3 className='text-2xl text-white font-bold mb-2 select-light-green'>
@@ -80,8 +100,16 @@ const ProjectItem = ({
               {description}
             </p>
             <div className='flex gap-3'>
-              <MySmallButton title='Go to Project' link='/' />
-              <MySmallButton title='View Github' link='/' />
+              <MySmallButton
+                title='Open Project'
+                link={projectLink || '/'}
+                icon='externalLinkAlt'
+              />
+              <MySmallButton
+                title='Github Repo'
+                link={githubLink || '/'}
+                icon='github'
+              />
             </div>
           </div>
         </div>
