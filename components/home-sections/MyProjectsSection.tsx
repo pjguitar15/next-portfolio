@@ -15,6 +15,8 @@ const MyProjectsSection = () => {
           title='ILTP Website'
           description={`Ever heard of the International Leadership Training Program (ILTP)? Well, I built their website using ReactJS! It's this cool volunteer organization based in the US. Here's the kicker: I tackled the whole website backend myself, since I was still learning about Headless CMS. That was quite the adventure, let me tell you. But hey, the result? A snazzy website that showcases my problem-solving skills, adaptability, and commitment to creating awesome user experiences.`}
           tags={['ReactJS', 'Bootstrap', 'Firebase', 'PayPal Integration']}
+          imagePath='/iltp-preview.jpg'
+          projectLink='https://iltp.org/'
         />
         <ProjectItem
           keyItem={1}

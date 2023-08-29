@@ -1,28 +1,43 @@
 import React from 'react'
 import RoundedBadge from './RoundedBadge'
 import MySmallButton from './MySmallButton'
+import Image from 'next/image'
 
 const ProjectItem = ({
   keyItem,
   title,
   description,
   tags,
+  imagePath,
+  projectLink,
 }: {
   keyItem: number
   title: string
   description: string
   tags: string[]
+  imagePath?: string
+  projectLink?: string
 }) => {
   return (
     <>
       {keyItem % 2 === 0 ? (
         <div className='lg:flex'>
           <div className='lg:w-6/12 flex overflow-hidden cursor-pointer hover:brightness-75 transition duration-300'>
-            <img
-              className='object-cover hover:scale-105 transition duration-300 ease-in-out'
-              src='https://media.geeksforgeeks.org/wp-content/uploads/20230519095635/How-to-Deploy-React-App-on-Netlify-Using-Github.png'
-              alt='test'
-            />
+            {imagePath ? (
+              <Image
+                className='object-cover w-full'
+                src={imagePath}
+                alt=''
+                width={500}
+                height={500}
+              />
+            ) : (
+              <img
+                className='object-cover hover:scale-105 transition duration-300 ease-in-out'
+                src='https://media.geeksforgeeks.org/wp-content/uploads/20230519095635/How-to-Deploy-React-App-on-Netlify-Using-Github.png'
+                alt='test'
+              />
+            )}
           </div>
           <div className='py-10 lg:p-14 lg:w-6/12 flex flex-col justify-center'>
             <h3 className='text-2xl text-white font-bold mb-2 select-light-green'>
@@ -37,7 +52,7 @@ const ProjectItem = ({
               {description}
             </p>
             <div className='flex gap-3'>
-              <MySmallButton title='Go to Project' link='/' />
+              <MySmallButton title='Go to Project' link={projectLink || '/'} />
               <MySmallButton title='View Github' link='/' />
             </div>
           </div>

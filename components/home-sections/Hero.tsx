@@ -29,7 +29,7 @@ const Hero = () => {
             <div className='bg-light-green w-1/2 lg:w-full h-64 md:h-96 absolute left-1/2 bottom-0 z-0 rounded-full transform -translate-x-1/2'></div>
             <div className='z-1 relative w-1/2 lg:w-full xl:w-9/12'>
               <Image
-                src='/myphoto.png'
+                src='/myphoto.webp'
                 layout='responsive'
                 width={500}
                 height={500}

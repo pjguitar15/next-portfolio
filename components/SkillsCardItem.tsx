@@ -27,7 +27,6 @@ const SkillsCardItem = ({
         </h3>
         <p className='w-9/12 mx-auto md:w-full text-white text-center text-md select-light-green'>
           {description}
-          corporis amet similique.
         </p>
       </div>
     </div>

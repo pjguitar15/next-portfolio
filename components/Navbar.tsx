@@ -78,10 +78,14 @@ const Navbar = () => {
           >
             Portfolio
           </a>
-          <a href='#' className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'>
+          <a
+            href='#contact'
+            className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
+          >
             Contact
           </a>
         </div>
+        {/* Mobile links */}
         <div
           className={`${
             menuOpen ? 'block' : 'hidden'
@@ -112,25 +116,29 @@ const Navbar = () => {
             <div className='flex flex-col'>
               <div className='w-full text-center'>
                 <a
-                  href='#'
+                  onClick={toggleMenu}
+                  href='/'
                   className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
                 >
                   Home
                 </a>
                 <a
-                  href='#'
+                  onClick={toggleMenu}
+                  href='#about'
                   className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
                 >
                   About
                 </a>
                 <a
-                  href='#'
+                  onClick={toggleMenu}
+                  href='#projects'
                   className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
                 >
                   Portfolio
                 </a>
                 <a
-                  href='#'
+                  onClick={toggleMenu}
+                  href='#contact'
                   className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
                 >
                   Contact
