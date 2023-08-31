@@ -10,7 +10,7 @@ const MySkillsSection = () => {
           <HeadingText text='My Skills' emphasis='Skills' />
         </div>
         {/* RowCols here */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-10'>
+        <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-12 gap-y-10'>
           <SkillsCardItem
             imagePath='/logos/html.png'
             title='HTML'

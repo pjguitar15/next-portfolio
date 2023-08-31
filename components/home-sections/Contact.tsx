@@ -1,20 +1,34 @@
-import React from 'react'
+'use client'
+import { useState } from 'react'
 import HeadingText from '../HeadingText'
 import MySmallButton from '../MySmallButton'
 import Image from 'next/image'
 
 const Contact = () => {
+  const [nameInput, setNameInput] = useState('')
+  const [emailInput, setEmailInput] = useState('')
+  const [messageInput, setMessageInput] = useState('')
+  const handleContactForm = (event: React.FormEvent<HTMLFormElement>): void => {
+    event.preventDefault()
+    alert(nameInput)
+  }
   return (
-    <div className='bg-zinc-950'>
+    <div className='bg-zinc-950' id='contact'>
       <div className='container mx-auto pt-20'>
         <HeadingText text={`Let's Talk`} emphasis='Talk' />
         <div className='lg:flex gap-5 mt-7'>
-          <form className='flex-1 flex flex-col gap-4 pb-20' action=''>
+          <form
+            onSubmit={handleContactForm}
+            className='flex-1 flex flex-col gap-4 pb-20'
+            action=''
+          >
             <div className='flex flex-col'>
               <label className='text-white mb-2 text-sm font-semibold'>
                 Name
               </label>
               <input
+                value={nameInput}
+                onChange={(e) => setNameInput(e.target.value)}
                 className='bg-zinc-800 px-5 py-3 rounded'
                 type='text'
                 placeholder='Enter name'
@@ -42,7 +56,7 @@ const Contact = () => {
               />
             </div>
             <div className='mt-3'>
-              <MySmallButton title='Submit' icon='submit' />
+              <MySmallButton title='Submit' icon='submit' isSubmitBtn={true} />
             </div>
           </form>
           <div className='flex items-end justify-end relative'>

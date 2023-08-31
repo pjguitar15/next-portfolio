@@ -58,11 +58,13 @@ const ProjectItem = ({
                 title='Go to Project'
                 link={projectLink || '/'}
                 icon='externalLinkAlt'
+                isSubmitBtn={false}
               />
               <MySmallButton
                 title='Github Repo'
                 link={githubLink || '/'}
                 icon='github'
+                isSubmitBtn={false}
               />
             </div>
           </div>
@@ -104,11 +106,13 @@ const ProjectItem = ({
                 title='Open Project'
                 link={projectLink || '/'}
                 icon='externalLinkAlt'
+                isSubmitBtn={false}
               />
               <MySmallButton
                 title='Github Repo'
                 link={githubLink || '/'}
                 icon='github'
+                isSubmitBtn={false}
               />
             </div>
           </div>

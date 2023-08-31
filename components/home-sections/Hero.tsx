@@ -3,6 +3,7 @@ import Image from 'next/image'
 import MyButton from '../MyButton'
 import HeadingText from '../HeadingText'
 import Badge from '../Badge'
+import CVButton from '../CVButton'
 
 const Hero = () => {
   return (
@@ -23,7 +24,10 @@ const Hero = () => {
               years of expertise to the table. I am dedicated to producing clean
               code and am known for my strong work ethic.
             </p>
-            <MyButton title='Check out my Portfolio' link='#projects' />
+            <div className='flex gap-4'>
+              <MyButton title='Check out my Portfolio' link='#projects' />
+              <CVButton />
+            </div>
           </div>
           <div className='relative lg:w-5/12 flex justify-center items-end'>
             <div className='bg-light-green w-1/2 lg:w-full h-64 md:h-96 absolute left-1/2 bottom-0 z-0 rounded-full transform -translate-x-1/2'></div>

@@ -10,11 +10,14 @@ const MySmallButton = ({
   title,
   link,
   icon,
+  isSubmitBtn,
 }: {
   title: string
   link?: string
   icon?: string
-}) => {
+  isSubmitBtn: boolean
+  }) => {
+  //
   return (
     <div>
       <a
