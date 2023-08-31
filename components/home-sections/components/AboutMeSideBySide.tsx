@@ -1,6 +1,6 @@
+'use client'
 import HeadingText from '@/components/HeadingText'
 import React from 'react'
-
 import HorizontalCard from './HorizontalCard'
 import Badge from '@/components/Badge'
 
