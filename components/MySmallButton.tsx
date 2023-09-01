@@ -4,6 +4,7 @@ import {
   faExternalLinkAlt,
   faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import Image from 'next/image'
 
 const MySmallButton = ({
@@ -16,31 +17,30 @@ const MySmallButton = ({
   link?: string
   icon?: string
   isSubmitBtn: boolean
-  }) => {
+}) => {
   //
   return (
     <div>
       <a
         target='_blank'
         href={link || '/'}
-        className='text-light-green hover:text-black font-medium text-md border hover:scale-110 px-8 py-2 border-light-green hover:border-light-green rounded-full transition duration-300 ease-in-out inline-block hover:bg-light-green'
+        className='text-light-green hover:text-black font-medium text-md border hover:scale-110 px-8 py-2 border-light-green hover:border-light-green rounded-full transition duration-300 ease-in-out hover:bg-light-green inline-block'
       >
-        {icon === 'externalLinkAlt' && (
-          <FontAwesomeIcon className='mr-3' icon={faExternalLinkAlt} />
-        )}
-        {icon === 'submit' && (
-          <FontAwesomeIcon className='mr-3' icon={faPaperPlane} />
-        )}
-        {icon === 'github' && (
-          <Image
-            className='w-5 h-5 inline-block mr-3'
-            src='/logos/github-light-green.png'
-            alt='test'
-            width={500}
-            height={500}
-          />
-        )}
-        {title}
+        <div className='flex items-center'>
+          {icon === 'externalLinkAlt' && (
+            <FontAwesomeIcon className='mr-3' icon={faExternalLinkAlt} />
+          )}
+          {icon === 'submit' && (
+            <FontAwesomeIcon className='mr-3' icon={faPaperPlane} />
+          )}
+          {icon === 'github' && (
+            <FontAwesomeIcon
+              className='inline-block mr-3 text-xl'
+              icon={faGithub}
+            />
+          )}
+          {title}
+        </div>
       </a>
     </div>
   )

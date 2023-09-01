@@ -11,10 +11,10 @@ const SkillsCardItem = ({
   description: string
 }) => {
   return (
-    <div className='text-center'>
-      <div className='bg-light-green mx-auto h-36 w-36 flex items-center justify-center rounded-full'>
+    <div className='text-center group'>
+      <div className='bg-light-green cursor-pointer mx-auto h-36 w-36 flex items-center justify-center rounded-full'>
         <Image
-          className='w-20 h-auto'
+          className='w-20 h-auto group-hover:scale-150 transition duration-300'
           src={imagePath}
           alt=''
           width={400}

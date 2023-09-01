@@ -35,12 +35,9 @@ const HorizontalCard = ({
         <p className='text-gray-400 mb-4 md:w-3/4 select-light-green'>
           {description}
         </p>
-        <Link
-          className='text-white font-semibold text-sm underline select-light-green'
-          href='#'
-        >
+        <div className='text-white font-semibold text-sm underline select-light-green'>
           LEARN MORE
-        </Link>
+        </div>
       </div>
     </div>
   )
