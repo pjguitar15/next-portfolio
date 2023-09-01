@@ -1,18 +1,53 @@
-// import React, { createContext, useContext, useState } from 'react'
+'use client'
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  Dispatch,
+  SetStateAction,
+} from 'react'
 
-// // fix
-// // const ModalContext = createContext()
+interface ContextProps {
+  isModalOpen: boolean
+  setIsModalOpen: Dispatch<SetStateAction<boolean>>
+  modalTitle: string
+  setModalTitle: Dispatch<SetStateAction<string>>
+  modalDescription: string
+  setModalDescription: Dispatch<SetStateAction<string>>
+}
 
-// export const useModalContext = () => {
-//   return useContext(ModalContext)
-// }
+const GlobalContext = createContext<ContextProps>({
+  isModalOpen: false,
+  setIsModalOpen: () => {},
+  modalTitle: '',
+  setModalTitle: () => {},
+  modalDescription: '',
+  setModalDescription: () => {},
+})
 
-// export const ModalProvider = ({ children }: { children: any }) => {
-//   const [isModalOpen, setIsModalOpen] = useState(false)
+export const GlobalContextProvider = ({
+  children,
+}: {
+  children: ReactNode
+}) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [modalTitle, setModalTitle] = useState('')
+  const [modalDescription, setModalDescription] = useState('')
+  return (
+    <GlobalContext.Provider
+      value={{
+        isModalOpen,
+        setIsModalOpen,
+        modalTitle,
+        setModalTitle,
+        modalDescription,
+        setModalDescription,
+      }}
+    >
+      {children}
+    </GlobalContext.Provider>
+  )
+}
 
-//   return (
-//     <ModalContext.Provider value={{ isModalOpen, setIsModalOpen }}>
-//       {children}
-//     </ModalContext.Provider>
-//   )
-// }
+export const useGlobalContext = () => useContext(GlobalContext)

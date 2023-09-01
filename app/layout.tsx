@@ -6,6 +6,8 @@ import Footer from '@/components/Footer'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
+// Context
+import { GlobalContextProvider } from '@/context/ModalContext'
 
 const inter = Montserrat({ subsets: ['latin'] })
 
@@ -23,9 +25,11 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <Navbar />
-        {children}
-        <Footer />
+        <GlobalContextProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </GlobalContextProvider>
       </body>
     </html>
   )
