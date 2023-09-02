@@ -16,16 +16,16 @@ const Hero = () => {
               <Badge title='frontend developer' />
             </div>
             <div className='text-center lg:text-start'>
-              <HeadingText text='Talk is cheap' />
-              <HeadingText text='Show me the code.' emphasis='code.' />
+              <HeadingText text='Philcob Suzuki Josol.' emphasis='Philcob' />
+              <HeadingText text='I build things for the web.' emphasis='web.' />
             </div>
             <p className='text-white text-lg font-normal mt-3 leading-8 mb-9 w-5/6 select-light-green text-center lg:text-left'>
-              Hi, I am Philcob! I am a frontend developer specializing in{' '}
-              <strong className='select-light-green'>NextJS</strong>, bringing 2
-              years of expertise to the table. I am dedicated to producing clean
-              code and am known for my strong work ethic.
+              Hi, I am Philcob! I am a frontend developer and I choose
+              <strong className='select-light-green'> ReactJS </strong>as my
+              framework of choice. I build and code beautifully simple things,
+              and I love what I do.
             </p>
-            <div className='flex gap-4'>
+            <div className='flex flex-col md:flex-row gap-4 items-center'>
               <MyButton title='Check out my Portfolio' link='#projects' />
               <CVButton />
             </div>

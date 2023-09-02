@@ -1,16 +1,55 @@
 'use client'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import HeadingText from '../HeadingText'
-import MySmallButton from '../MySmallButton'
 import Image from 'next/image'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+import emailjs from '@emailjs/browser'
+import LoadingAnimation from '../LoadingAnimation'
 
 const Contact = () => {
   const [nameInput, setNameInput] = useState('')
   const [emailInput, setEmailInput] = useState('')
   const [messageInput, setMessageInput] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [isFormLoading, setIsFormLoading] = useState(false)
+  const [formSuccessMessage, setFormSuccessMessage] = useState('')
+  const formRef = useRef<any>(null)
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!
+
   const handleContactForm = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
-    alert(nameInput)
+    if (!nameInput || !emailInput || !messageInput) {
+      setErrorMessage('Please complete all the fields. Thank you!')
+      setTimeout(() => {
+        setErrorMessage('')
+      }, 5000)
+    } else {
+      if (formRef.current) {
+        setIsFormLoading(true)
+        emailjs
+          .sendForm(serviceId, templateId, formRef.current, publicKey)
+          .then(
+            (result) => {
+              setFormSuccessMessage('Form has been submitted successfully!')
+            },
+            (error) => {
+              setErrorMessage(error)
+            }
+          )
+          .finally(() => {
+            setIsFormLoading(false)
+            setNameInput('')
+            setEmailInput('')
+            setMessageInput('')
+            setTimeout(() => {
+              setFormSuccessMessage('')
+            }, 8000)
+          })
+      }
+    }
   }
   return (
     <div className='bg-zinc-950' id='contact'>
@@ -18,6 +57,7 @@ const Contact = () => {
         <HeadingText text={`Let's Talk`} emphasis='Talk' />
         <div className='lg:flex gap-5 mt-7'>
           <form
+            ref={formRef}
             onSubmit={handleContactForm}
             className='flex-1 flex flex-col gap-4 pb-20'
             action=''
@@ -27,9 +67,10 @@ const Contact = () => {
                 Name
               </label>
               <input
+                name='user_name'
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                className='bg-zinc-800 px-5 py-3 rounded'
+                className='bg-zinc-800 px-5 py-3 rounded text-white'
                 type='text'
                 placeholder='Enter name'
               />
@@ -39,8 +80,11 @@ const Contact = () => {
                 Email
               </label>
               <input
-                className='bg-zinc-800 px-5 py-3 rounded'
-                type='text'
+                name='user_email'
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+                className='bg-zinc-800 px-5 py-3 rounded text-white'
+                type='email'
                 placeholder='Enter your email'
               />
             </div>
@@ -49,14 +93,31 @@ const Contact = () => {
                 Send a message
               </label>
               <textarea
-                className='bg-zinc-800 px-5 py-3 rounded'
+                name='message'
+                value={messageInput}
+                onChange={(e) => setMessageInput(e.target.value)}
+                className='bg-zinc-800 px-5 py-3 rounded text-white'
                 placeholder='Enter your message'
                 rows={4}
                 cols={50}
               />
             </div>
+            <h6 className='text-red-400'>{errorMessage}</h6>
+            <h6 className='text-green-400'>{formSuccessMessage}</h6>
             <div className='mt-3'>
-              <MySmallButton title='Submit' icon='submit' isSubmitBtn={true} />
+              <button
+                type='submit'
+                className='text-light-green hover:text-black font-medium text-md border hover:scale-110 px-8 py-2 border-light-green hover:border-light-green rounded-full transition duration-300 ease-in-out hover:bg-light-green inline-block'
+              >
+                <div className='flex items-center'>
+                  {isFormLoading ? (
+                    <LoadingAnimation />
+                  ) : (
+                    <FontAwesomeIcon className='mr-3' icon={faPaperPlane} />
+                  )}
+                  Submit
+                </div>
+              </button>
             </div>
           </form>
           <div className='flex items-end justify-end relative'>

@@ -22,7 +22,6 @@ const AboutMeSideBySide = () => {
             title='Clean Code'
             description='Committed to writing elegant and maintainable code that not only functions flawlessly but also simplifies collaboration and future enhancements.'
           />
-          {/* <HorizontalCard /> */}
         </div>
         <div className='pt-10 lg:pt-0 lg:px-10 lg:w-1/2 flex-1'>
           <div>

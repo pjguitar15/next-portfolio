@@ -16,33 +16,11 @@ const Footer = () => {
     <>
       <footer className='bg-zinc-950 text-white py-7 border-t-2 border-light-green'>
         <div className='container mx-auto flex flex-col lg:flex-row justify-between items-start'>
-          <div className='flex flex-col items-center sm:items-left justify w-full lg:w-auto'>
+          <div className='flex flex-col md:items-start sm:items-left w-full lg:w-auto'>
             <Logo />
-            <div className='flex mt-4 gap-5 lg:justify-start'>
-              <a href='https://github.com/pjguitar15' target='_blank'>
-                <FontAwesomeIcon
-                  className='text-white text-2xl'
-                  icon={faGithub}
-                />
-              </a>
-              <a href='https://www.facebook.com/PhilcobSuzuki/' target='_blank'>
-                <FontAwesomeIcon
-                  className='text-white text-2xl'
-                  icon={faFacebook}
-                />
-              </a>
-              <a
-                href='https://www.instagram.com/philcobsuzuki/'
-                target='_blank'
-              >
-                <FontAwesomeIcon
-                  className='text-white text-2xl'
-                  icon={faInstagram}
-                />
-              </a>
-            </div>
+            <p className='text-left mt-4 ms-0'>I build things for the web.</p>
           </div>
-          <div className='flex flex-col pt-5 lg:pt-0 w-full lg:w-auto items-center lg:items-start'>
+          <div className='flex flex-col pt-5 lg:pt-0 w-full lg:w-auto items-center lg:items-end'>
             <ul className='flex space-x-4'>
               <li>
                 <Link href='/' className='hover:text-gray-300'>
@@ -65,16 +43,27 @@ const Footer = () => {
                 </a>
               </li>
             </ul>
-            <div className='text-center lg:text-end mt-5 w-full'>
-              {/* <FontAwesomeIcon className='text-2xl' icon={faLocationDot} /> */}
+            <div className='flex mt-4 gap-5 lg:justify-end'>
+              <a href='https://github.com/pjguitar15' target='_blank'>
+                <FontAwesomeIcon
+                  className='text-white text-2xl'
+                  icon={faGithub}
+                />
+              </a>
+              <a href='https://www.facebook.com/PhilcobSuzuki/' target='_blank'>
+                <FontAwesomeIcon
+                  className='text-white text-2xl'
+                  icon={faFacebook}
+                />
+              </a>
               <a
-                href='https://goo.gl/maps/M5ks8cDcnQAvQHip8'
+                href='https://www.instagram.com/philcobsuzuki/'
                 target='_blank'
-                className='underline'
               >
-                <p>728 Cristobal Street</p>
-                <p>Sampaloc, Manila</p>
-                <p>Philippines</p>
+                <FontAwesomeIcon
+                  className='text-white text-2xl'
+                  icon={faInstagram}
+                />
               </a>
             </div>
           </div>
