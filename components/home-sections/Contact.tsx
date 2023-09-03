@@ -106,8 +106,9 @@ const Contact = () => {
             <h6 className='text-green-400'>{formSuccessMessage}</h6>
             <div className='mt-3'>
               <button
+                disabled={isFormLoading ? true : false}
                 type='submit'
-                className='text-light-green hover:text-black font-medium text-md border hover:scale-110 px-8 py-2 border-light-green hover:border-light-green rounded-full transition duration-300 ease-in-out hover:bg-light-green inline-block'
+                className='text-light-green hover:text-black font-medium text-md border hover:scale-110 px-8 py-2 border-light-green hover:border-light-green rounded-full transition duration-300 ease-in-out hover:bg-light-green inline-block disabled:opacity-50'
               >
                 <div className='flex items-center'>
                   {isFormLoading ? (

@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useGlobalContext } from '@/context/ModalContext'
 import { CardData } from '../../../data/HorizontalCardsData'
 
@@ -10,6 +10,9 @@ const HorizontalCardModal = () => {
   })
   const { isModalOpen, setIsModalOpen, modalTitle, modalDescription } =
     useGlobalContext()
+
+  const modalRef = useRef<any>(null)
+
   const handleClose = () => {
     setIsModalOpen(!isModalOpen)
   }
@@ -26,8 +29,24 @@ const HorizontalCardModal = () => {
       return ''
     })
   }, [modalTitle])
+
+  useEffect(() => {
+    console.log('use effect works')
+    if (modalRef.current) {
+      modalRef.current.focus()
+    }
+  }, [isModalOpen])
+
+  const handleKeyDown = (event: any) => {
+    if (event.key === 'Escape') {
+      setIsModalOpen(false)
+    }
+  }
   return (
     <div
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      ref={modalRef}
       className={`fixed inset-0 ${
         isModalOpen ? 'flex' : 'hidden'
       } flex items-center justify-center z-50 h-screen w-screen bg-zinc-900 `}
@@ -49,9 +68,12 @@ const HorizontalCardModal = () => {
                 {moreDescription.slicedTwo}
               </p>
             </div>
+            <div className='bg-zinc-800 text-white mt-7 px-5 py-4 rounded w-1/4'>
+              Press <strong>escape</strong> key to close
+            </div>
             <button
               onClick={handleClose}
-              className='mt-7 bg-light-green text-black px-4 py-2 rounded font-medium hover:bg-green-400'
+              className='mt-3 bg-light-green text-black px-4 py-2 rounded font-medium hover:bg-green-400'
             >
               Back to home
             </button>

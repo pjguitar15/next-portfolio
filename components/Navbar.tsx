@@ -63,9 +63,12 @@ const Navbar = () => {
           </button>
         </div>
         <div className='hidden md:flex gap-8 lg:gap-4'>
-          <a href='#' className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'>
+          <Link
+            className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
+            href={'/'}
+          >
             Home
-          </a>
+          </Link>
           <a
             href='#about'
             className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
