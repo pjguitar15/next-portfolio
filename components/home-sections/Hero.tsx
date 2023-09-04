@@ -25,7 +25,7 @@ const Hero = () => {
               <HeadingText text='Philcob Suzuki Josol.' emphasis='Philcob' />
               <HeadingText text='I build things for the web.' emphasis='web.' />
             </div>
-            <p className='text-white text-lg font-normal mt-3 leading-8 mb-9 w-5/6 select-light-green text-center lg:text-left'>
+            <p className='text-gray-300 text-lg font-normal mt-3 leading-8 mb-9 w-5/6 select-light-green text-center lg:text-left'>
               Hi, I am Philcob! I am a frontend developer and I choose
               <strong className='select-light-green'> ReactJS/NextJS </strong>as
               my framework of choice. I build and code beautifully simple
@@ -42,7 +42,7 @@ const Hero = () => {
             )}
             <div className='z-1 relative w-1/2 lg:w-full xl:w-9/12'>
               <Image
-                src='/myphoto.webp'
+                src='/myphoto-enhanced.png'
                 layout='responsive'
                 width={500}
                 height={500}

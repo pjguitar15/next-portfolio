@@ -26,7 +26,7 @@ const AboutMeSideBySide = () => {
         <div className='pt-10 lg:pt-0 lg:px-10 lg:w-1/2 flex-1'>
           <div>
             <HeadingText text='About Me' emphasis='Me' />
-            <p className='text-white text-md font-normal mt-3 leading-8 mb-9 select-light-green'>
+            <p className='text-gray-300 text-md font-normal mt-3 leading-8 mb-9 select-light-green'>
               {`Hey there! I'm Philcob Suzuki Josol, a 25-year-old enthusiast from the
           vibrant Philippines. My unique heritage is a blend of Japanese and
           Filipino cultures, which has given me a diverse perspective and a
@@ -36,7 +36,7 @@ const AboutMeSideBySide = () => {
           <hr />
           <div className='mt-9'>
             <Badge title='Journey into ReactJS' />
-            <p className='text-white text-md font-normal leading-8 mb-9 select-light-green'>
+            <p className='text-gray-300 text-md font-normal leading-8 mb-9 select-light-green'>
               I poured countless hours into ReactJS, developing personal
               projects that ignited my passion. Alongside these endeavors, I
               dabbled in freelance projects, honing my skills while contributing
@@ -46,7 +46,7 @@ const AboutMeSideBySide = () => {
           </div>
           <div className='mt-9'>
             <Badge title='Embracing NextJS for the Future' />
-            <p className='text-white text-md font-normal leading-8 mb-9 select-light-green'>
+            <p className='text-gray-300 text-md font-normal leading-8 mb-9 select-light-green'>
               As the new year rolled in, I eagerly embraced the power of NextJS
               in my projects. The seamless rendering capabilities, server-side
               rendering, and effortless routing have transformed the way I

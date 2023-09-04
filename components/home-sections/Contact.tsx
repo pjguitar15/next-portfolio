@@ -67,10 +67,11 @@ const Contact = () => {
                 Name
               </label>
               <input
+                disabled={isFormLoading}
                 name='user_name'
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                className='bg-zinc-800 px-5 py-3 rounded text-white'
+                className='bg-zinc-800 px-5 py-3 rounded text-white disabled:cursor-not-allowed disabled:opacity-50'
                 type='text'
                 placeholder='Enter name'
               />
@@ -80,10 +81,11 @@ const Contact = () => {
                 Email
               </label>
               <input
+                disabled={isFormLoading}
                 name='user_email'
                 value={emailInput}
                 onChange={(e) => setEmailInput(e.target.value)}
-                className='bg-zinc-800 px-5 py-3 rounded text-white'
+                className='bg-zinc-800 px-5 py-3 rounded text-white disabled:cursor-not-allowed disabled:opacity-50'
                 type='email'
                 placeholder='Enter your email'
               />
@@ -93,10 +95,11 @@ const Contact = () => {
                 Send a message
               </label>
               <textarea
+                disabled={isFormLoading}
                 name='message'
                 value={messageInput}
                 onChange={(e) => setMessageInput(e.target.value)}
-                className='bg-zinc-800 px-5 py-3 rounded text-white'
+                className='bg-zinc-800 px-5 py-3 rounded text-white disabled:cursor-not-allowed disabled:opacity-50'
                 placeholder='Enter your message'
                 rows={4}
                 cols={50}

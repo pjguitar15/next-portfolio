@@ -50,7 +50,7 @@ const ProjectItem = ({
                 <RoundedBadge key={index} title={item} />
               ))}
             </div>
-            <p className='text-white leading-6 mb-6 select-light-green'>
+            <p className='text-gray-300 leading-6 mb-6 select-light-green'>
               {description}
             </p>
             <div className='flex gap-3'>
@@ -123,7 +123,7 @@ const ProjectItem = ({
                 <RoundedBadge key={index} title={item} />
               ))}
             </div>
-            <p className='text-white leading-6 mb-6 select-light-green'>
+            <p className='text-gray-300 leading-6 mb-6 select-light-green'>
               {description}
             </p>
             <div className='flex gap-3'>

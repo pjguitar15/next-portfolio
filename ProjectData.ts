@@ -10,7 +10,7 @@ export const allProjects = [
   {
     title: 'Bullish Beast Website',
     description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem eum voluptatibus nobis officia doloremque molestiae dicta. Soluta ducimus quo error laborum. Sit optio sapiente quisquam minus cum cumque quidem magni?',
+      'In this project, I undertook the development of a website for a client, who ultimately decided to cancel the project. This experience provided me with valuable insights into effective client communication. Regrettably, I encountered a challenging situation where I invested significant time and effort, nearly a month, building the website. The client consistently requested revisions, leading to increasing complexity in the project. Ultimately, I made the difficult decision to discontinue the project, but I emerged from this experience having gained invaluable lessons.',
     tags: ['ReactJS', 'Firebase'],
     imagePath: '/bullishbeast.jpg',
     projectLink: 'https://bullishbeast.netlify.app/',
@@ -18,8 +18,7 @@ export const allProjects = [
   },
   {
     title: 'Movie App',
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem eum voluptatibus nobis officia doloremque molestiae dicta. Soluta ducimus quo error laborum. Sit optio sapiente quisquam minus cum cumque quidem magni?',
+    description: `Here's one of my personal projects where I built a website using Next.js and Tailwind CSS, incorporating the TMDB Movie API. This straightforward yet engaging application allows users to seamlessly retrieve data from the API, dynamically load content, and utilize a convenient search feature.`,
     tags: ['NextJS', 'API', 'Tailwindcss'],
     imagePath: '/movie-app.jpg',
     projectLink: 'https://movie-app-pjguitar15.vercel.app/',
