@@ -16,9 +16,13 @@ const Footer = () => {
     <>
       <footer className='bg-zinc-950 text-white py-7 border-t-2 border-light-green'>
         <div className='container mx-auto flex flex-col lg:flex-row justify-between items-start'>
-          <div className='flex flex-col md:items-start sm:items-left w-full lg:w-auto'>
-            <Logo />
-            <p className='text-left mt-4 ms-0'>I build things for the web.</p>
+          <div className='flex flex-col item-center w-full lg:w-auto'>
+            <div className='mx-auto lg:ms-0'>
+              <Logo />
+            </div>
+            <p className='mt-4 ms-0 text-center lg:text-left'>
+              I build things for the web.
+            </p>
           </div>
           <div className='flex flex-col pt-5 lg:pt-0 w-full lg:w-auto items-center lg:items-end'>
             <ul className='flex space-x-4'>

@@ -54,18 +54,43 @@ const ProjectItem = ({
               {description}
             </p>
             <div className='flex gap-3'>
-              <MySmallButton
-                title='Go to Project'
-                link={projectLink || '/'}
-                icon='externalLinkAlt'
-                isSubmitBtn={false}
-              />
-              <MySmallButton
-                title='Github Repo'
-                link={githubLink || '/'}
-                icon='github'
-                isSubmitBtn={false}
-              />
+              {/* small screen button */}
+              <div className='md:hidden'>
+                <MySmallButton
+                  title='Project'
+                  link={projectLink || '/'}
+                  icon='externalLinkAlt'
+                  isSubmitBtn={false}
+                />
+              </div>
+              {/* large screen button */}
+              <div className='hidden md:block'>
+                <MySmallButton
+                  title='Go to Project'
+                  link={projectLink || '/'}
+                  icon='externalLinkAlt'
+                  isSubmitBtn={false}
+                />
+              </div>
+
+              {/* small screen button */}
+              <div className='md:hidden'>
+                <MySmallButton
+                  title='Github'
+                  link={githubLink || '/'}
+                  icon='github'
+                  isSubmitBtn={false}
+                />
+              </div>
+              {/* large screen button */}
+              <div className='hidden md:block'>
+                <MySmallButton
+                  title='Github Repo'
+                  link={githubLink || '/'}
+                  icon='github'
+                  isSubmitBtn={false}
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -102,18 +127,43 @@ const ProjectItem = ({
               {description}
             </p>
             <div className='flex gap-3'>
-              <MySmallButton
-                title='Open Project'
-                link={projectLink || '/'}
-                icon='externalLinkAlt'
-                isSubmitBtn={false}
-              />
-              <MySmallButton
-                title='Github Repo'
-                link={githubLink || '/'}
-                icon='github'
-                isSubmitBtn={false}
-              />
+              {/* small screen button */}
+              <div className='md:hidden'>
+                <MySmallButton
+                  title='Project'
+                  link={projectLink || '/'}
+                  icon='externalLinkAlt'
+                  isSubmitBtn={false}
+                />
+              </div>
+              {/* large screen button */}
+              <div className='hidden md:block'>
+                <MySmallButton
+                  title='Open Project'
+                  link={projectLink || '/'}
+                  icon='externalLinkAlt'
+                  isSubmitBtn={false}
+                />
+              </div>
+
+              {/* small screen button */}
+              <div className='md:hidden'>
+                <MySmallButton
+                  title='Github'
+                  link={githubLink || '/'}
+                  icon='github'
+                  isSubmitBtn={false}
+                />
+              </div>
+              {/* large screen button */}
+              <div className='hidden md:block'>
+                <MySmallButton
+                  title='Github Repo'
+                  link={githubLink || '/'}
+                  icon='github'
+                  isSubmitBtn={false}
+                />
+              </div>
             </div>
           </div>
         </div>

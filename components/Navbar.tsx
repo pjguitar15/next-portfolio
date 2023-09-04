@@ -63,30 +63,46 @@ const Navbar = () => {
           </button>
         </div>
         <div className='hidden md:flex gap-8 lg:gap-4'>
-          <Link
-            className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
-            href={'/'}
+          <div
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
           >
-            Home
-          </Link>
-          <a
-            href='#about'
-            className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
+            <Link
+              className={`block lg:inline-block mt-2 lg:mt-0 mx-3`}
+              href={'/'}
+            >
+              Home
+            </Link>
+          </div>
+          <div
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
           >
-            About
-          </a>
-          <a
-            href='#projects'
-            className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
+            <a
+              href='#about'
+              className='block lg:inline-block mt-2 lg:mt-0 mx-3'
+            >
+              About
+            </a>
+          </div>
+          <div
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
           >
-            Portfolio
-          </a>
-          <a
-            href='#contact'
-            className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
+            <a
+              href='#projects'
+              className='block lg:inline-block mt-2 lg:mt-0 mx-3'
+            >
+              Portfolio
+            </a>
+          </div>
+          <div
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
           >
-            Contact
-          </a>
+            <a
+              href='#contact'
+              className='block lg:inline-block mt-2 lg:mt-0 mx-3'
+            >
+              Contact
+            </a>
+          </div>
         </div>
         {/* Mobile links */}
         <div

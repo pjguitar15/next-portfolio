@@ -8,7 +8,7 @@ const MyProjectsSection = () => {
     <section className='bg-zinc-900 py-32 px-10 md:px-0' id='projects'>
       <div className='container mx-auto'>
         <div className='mb-10'>
-          <HeadingText text='My Projects' emphasis='Projects' />
+          <HeadingText text='/ projects' emphasis='projects' />
         </div>
         {/* Projects Cards */}
         {allProjects.map((item, index) => (

@@ -51,7 +51,7 @@ const HorizontalCardModal = () => {
         isModalOpen ? 'flex' : 'hidden'
       } flex items-center justify-center z-50 h-screen w-screen bg-zinc-900 `}
     >
-      <div className='transform transition-all p-10 flex flex-col justify-center items-center'>
+      <div className='transform transition-all p-5 md:p-10 lg:p-12 xl:p-28 flex flex-col justify-center items-center'>
         <div className='container mx-auto'>
           <div className='bg-zinc-900 text-white mb-3'>
             <h2 className='text-5xl mb-7 font-semibold text-light-green'>
@@ -60,20 +60,20 @@ const HorizontalCardModal = () => {
           </div>
           <div>
             <p className='text-white italic'>{modalDescription}</p>
-            <div className='grid grid-cols-2 gap-6'>
-              <p className='text-white mt-5 leading-7 text-justify'>
+            <div className='grid md:grid-cols-2 gap-6'>
+              <p className='text-white mt-5 leading-7'>
                 {moreDescription.slicedOne}
               </p>
-              <p className='text-white mt-5 leading-7 text-justify'>
+              <p className='text-white mt-5 leading-7 hidden md:block'>
                 {moreDescription.slicedTwo}
               </p>
             </div>
-            <div className='bg-zinc-800 text-white mt-7 px-5 py-4 rounded w-1/4'>
+            <div className='hidden md:block bg-zinc-800 text-white mt-7 px-5 py-4 rounded w-2/4 lg:w-1/4 text-center mb-4'>
               Press <strong>escape</strong> key to close
             </div>
             <button
               onClick={handleClose}
-              className='mt-3 bg-light-green text-black px-4 py-2 rounded font-medium hover:bg-green-400'
+              className='mt-6 md:mt-3 bg-light-green text-black px-4 py-2 rounded font-medium hover:bg-green-400'
             >
               Back to home
             </button>

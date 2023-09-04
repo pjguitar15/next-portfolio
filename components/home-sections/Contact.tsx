@@ -25,7 +25,7 @@ const Contact = () => {
       setErrorMessage('Please complete all the fields. Thank you!')
       setTimeout(() => {
         setErrorMessage('')
-      }, 5000)
+      }, 15000)
     } else {
       if (formRef.current) {
         setIsFormLoading(true)
@@ -104,7 +104,7 @@ const Contact = () => {
             </div>
             <h6 className='text-red-400'>{errorMessage}</h6>
             <h6 className='text-green-400'>{formSuccessMessage}</h6>
-            <div className='mt-3'>
+            <div className='mt-0'>
               <button
                 disabled={isFormLoading ? true : false}
                 type='submit'
@@ -121,7 +121,7 @@ const Contact = () => {
               </button>
             </div>
           </form>
-          <div className='flex items-end justify-end relative'>
+          <div className='items-end justify-end relative hidden md:flex'>
             <div className='absolute top-20 right-10 lg:top-3 lg:right-0 bg-light-green lg:px-10 py-7 rounded-full'>
               <p className='text-xl font-semibold w-4/5 lg:w-2/3 text-center mx-auto'>
                 Hello there, Thanks for dropping by!
