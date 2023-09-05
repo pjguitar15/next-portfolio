@@ -25,6 +25,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className='scroll-smooth'>
+      <Head>
+        <meta property='og:image' content='/thumbnail.jpg' />
+        <meta property='og:image:width' content='1200' />
+        <meta property='og:image:height' content='630' />
+      </Head>
       <body className={inter.className}>
         <GlobalContextProvider>
           <Navbar />

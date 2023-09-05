@@ -59,7 +59,9 @@ const HorizontalCardModal = () => {
             </h2>
           </div>
           <div>
-            <p className='text-white italic'>{modalDescription}</p>
+            <p className='text-white italic md:w-1/2 lg:w-2/5'>
+              {modalDescription}
+            </p>
             <div className='grid md:grid-cols-2 gap-6'>
               <p className='text-white mt-5 leading-7'>
                 {moreDescription.slicedOne}
