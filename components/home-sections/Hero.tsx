@@ -26,8 +26,8 @@ const Hero = () => {
               <HeadingText text='I build things for the web.' emphasis='web.' />
             </div>
             <p className='text-gray-300 text-lg font-normal mt-3 leading-8 mb-9 w-5/6 select-light-green text-center lg:text-left'>
-              Hi, I am Philcob! I am a frontend developer and I choose
-              <strong className='select-light-green'> ReactJS/NextJS </strong>as
+              Hi, I am Philcob! I am a frontend developer.
+              <strong className='select-light-green'> ReactJS/NextJS </strong>is
               my framework of choice. I build and code beautifully simple
               things, and I love what I do.
             </p>
