@@ -37,7 +37,7 @@ export const allProjects = [
     description: `Here's one of my personal projects where I built a website using ReactJs and Tailwind CSS, incorporating the TMDB Movie API. This straightforward yet engaging application allows users to seamlessly retrieve data from the API, dynamically load content, and utilize a convenient search feature.`,
     tags: ['NextJS', 'API', 'Tailwindcss'],
     imagePath: '/movie-app.jpg',
-    projectLink: 'https://movie-app-pjguitar15.vercel.app/',
+    projectLink: 'https://next-movie-app-kohl.vercel.app/',
     githubLink: 'https://github.com/pjguitar15/next-movie-app',
   },
 ]
