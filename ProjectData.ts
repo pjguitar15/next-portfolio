@@ -8,6 +8,14 @@ export const allProjects = [
     githubLink: 'https://github.com/pjguitar15/iltpwebsite',
   },
   {
+    title: 'Vocab Vault',
+    description: `This project represents one of my personal achievements in web development using Next.js and Tailwind CSS. Created not only for personal enjoyment but also as a means to enhance my portfolio, this Next.js application showcases my skills in crafting responsive and visually appealing web solutions. Through this project, I've demonstrated my proficiency in leveraging modern web technologies to build engaging user experiences and contribute to my growing portfolio.`,
+    tags: ['NextJS', 'Dictionary API', 'Tailwind'],
+    imagePath: '/vocabvault.jpg',
+    projectLink: 'https://next-dictionary-ashen.vercel.app/',
+    githubLink: 'https://github.com/pjguitar15/next-dictionary',
+  },
+  {
     title: 'Bullish Beast Website',
     description:
       'In this project, I undertook the development of a website for a client, who ultimately decided to cancel the project. This experience provided me with valuable insights into effective client communication. Regrettably, I encountered a challenging situation where I invested significant time and effort, nearly a month, building the website. The client consistently requested revisions, leading to increasing complexity in the project. Ultimately, I made the difficult decision to discontinue the project, but I emerged from this experience having gained invaluable lessons.',
