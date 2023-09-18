@@ -8,9 +8,17 @@ export const allProjects = [
     githubLink: 'https://github.com/pjguitar15/iltpwebsite',
   },
   {
+    title: 'Ingredient Savvy',
+    description: `Built with NextJS, TypeScript, TailwindCSS, and a Meal API, this project is one of my personal achievements in web development. This app gives you knowledge about how to prepare a lot of different meals from all around the world. Through this project, I've demonstrated my proficiency in leveraging modern web technologies to build engaging user experiences and contribute to my growing portfolio.`,
+    tags: ['NextJS', 'TypeScript', 'TailwindCSS', 'MealAPI'],
+    imagePath: '/meal-app.jpg',
+    projectLink: 'https://next-meal-sooty.vercel.app/search?q=chicken',
+    githubLink: 'https://github.com/pjguitar15/next-meal',
+  },
+  {
     title: 'Vocab Vault',
     description: `This project represents one of my personal achievements in web development using Next.js and Tailwind CSS. Created not only for personal enjoyment but also as a means to enhance my portfolio, this Next.js application showcases my skills in crafting responsive and visually appealing web solutions. Through this project, I've demonstrated my proficiency in leveraging modern web technologies to build engaging user experiences and contribute to my growing portfolio.`,
-    tags: ['NextJS', 'Dictionary API', 'Tailwind'],
+    tags: ['NextJS', 'Dictionary API', 'TailwindCSS'],
     imagePath: '/vocabvault.jpg',
     projectLink: 'https://next-dictionary-ashen.vercel.app/',
     githubLink: 'https://github.com/pjguitar15/next-dictionary',
