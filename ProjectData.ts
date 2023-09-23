@@ -24,6 +24,15 @@ export const allProjects = [
     githubLink: 'https://github.com/pjguitar15/next-dictionary',
   },
   {
+    title: 'Newsletter Email Validation',
+    description: `This is a simple project based on NextJS, TypeScript, and TailwindCSS that showcases email validation.`,
+    tags: ['ReactJS', 'TypeScript', 'TailwindCSS'],
+    imagePath: '/newsletter-validation.jpg',
+    projectLink: 'https://react-newsletter-email-validation.vercel.app/',
+    githubLink:
+      'https://github.com/pjguitar15/react-newsletter-email-validation',
+  },
+  {
     title: 'Bullish Beast Website',
     description:
       'In this project, I undertook the development of a website for a client, who ultimately decided to cancel the project. This experience provided me with valuable insights into effective client communication. Regrettably, I encountered a challenging situation where I invested significant time and effort, nearly a month, building the website. The client consistently requested revisions, leading to increasing complexity in the project. Ultimately, I made the difficult decision to discontinue the project, but I emerged from this experience having gained invaluable lessons.',
