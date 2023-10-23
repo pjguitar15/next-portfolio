@@ -10,6 +10,7 @@ export const LinkWithHover = () => {
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [aboutActive, setAboutActive] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,15 @@ const Navbar = () => {
       } else {
         setScrolled(false)
       }
+
+      if (window.scrollY >= 1500 && window.scrollY <= 2323) {
+        setAboutActive(true)
+      } else {
+        setAboutActive(false)
+      }
+      // 1566 to 2323 About
+      // 2324 to Skills
+      console.log(window.scrollY)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -33,9 +43,7 @@ const Navbar = () => {
   }
   return (
     <nav
-      className={`bg-zinc-900 text-white py-5 z-50 ${
-        scrolled && 'fixed w-full'
-      }`}
+      className={`bg-zinc-900 text-white  z-50 ${scrolled && 'fixed w-full'}`}
     >
       <div className='container mx-auto flex items-center justify-between px-8 md:px-0'>
         <div>
@@ -64,42 +72,32 @@ const Navbar = () => {
         </div>
         <div className='hidden md:flex gap-8 lg:gap-4'>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4`}
           >
-            <Link
-              className={`block lg:inline-block mt-2 lg:mt-0 mx-3`}
-              href={'/'}
-            >
+            <Link className={`block lg:inline-block lg:mt-0 mx-3`} href={'/'}>
               Home
             </Link>
           </div>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
+              aboutActive && 'bg-light-green  text-black font-semibold'
+            }`}
           >
-            <a
-              href='#about'
-              className='block lg:inline-block mt-2 lg:mt-0 mx-3'
-            >
+            <a href='#about' className='block lg:inline-block lg:mt-0 mx-3'>
               About
             </a>
           </div>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4`}
           >
-            <a
-              href='#projects'
-              className='block lg:inline-block mt-2 lg:mt-0 mx-3'
-            >
+            <a href='#projects' className='block lg:inline-block lg:mt-0 mx-3'>
               Portfolio
             </a>
           </div>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4`}
           >
-            <a
-              href='#contact'
-              className='block lg:inline-block mt-2 lg:mt-0 mx-3'
-            >
+            <a href='#contact' className='block lg:inline-block lg:mt-0 mx-3'>
               Contact
             </a>
           </div>

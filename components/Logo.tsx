@@ -1,9 +1,10 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Logo = () => {
   return (
-    <div className='flex items-center'>
+    <Link className='flex items-center' href='/'>
       <Image
         className='w-7 h-7'
         src='/mylogo.png'
@@ -14,7 +15,7 @@ const Logo = () => {
       <div className='text-white font-bold text-xl ml-3'>
         Phil <span className='text-light-green'>Codes</span>
       </div>
-    </div>
+    </Link>
   )
 }
 
