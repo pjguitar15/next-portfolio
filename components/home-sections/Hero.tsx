@@ -33,7 +33,7 @@ const Hero = () => {
             </p>
             <div className="flex flex-col md:flex-row gap-4 items-center">
               <MyButton title="Check out my Portfolio" link="#projects" />
-              {/* <CVButton /> */}
+              <CVButton />
             </div>
           </div>
           <div className="relative lg:w-5/12 flex justify-center items-end">
