@@ -25,19 +25,13 @@ const ProjectItem = ({
       {keyItem % 2 === 0 ? (
         <div className='lg:flex'>
           <div className='lg:w-6/12 flex overflow-hidden cursor-pointer hover:brightness-75 transition duration-300'>
-            {imagePath ? (
+            {imagePath && (
               <Image
                 className='object-cover w-full'
                 src={imagePath}
                 alt=''
-                width={500}
-                height={500}
-              />
-            ) : (
-              <img
-                className='object-cover hover:scale-105 transition duration-300 ease-in-out'
-                src='https://media.geeksforgeeks.org/wp-content/uploads/20230519095635/How-to-Deploy-React-App-on-Netlify-Using-Github.png'
-                alt='test'
+                width={1920}
+                height={1080}
               />
             )}
           </div>
