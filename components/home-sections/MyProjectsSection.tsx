@@ -1,14 +1,20 @@
-import React from 'react'
-import HeadingText from '../HeadingText'
-import ProjectItem from '../ProjectItem'
-import { allProjects } from '@/ProjectData'
+import React from "react";
+import HeadingText from "../HeadingText";
+import ProjectItem from "../ProjectItem";
+import { allProjects } from "@/ProjectData";
 
 const MyProjectsSection = () => {
   return (
-    <section className='bg-zinc-900 py-32 px-10 md:px-0' id='projects'>
+    <section
+      className='bg-zinc-900 py-32 px-10 md:px-0'
+      id='portfolio'
+    >
       <div className='container mx-auto'>
         <div className='mb-10'>
-          <HeadingText text='/ projects' emphasis='projects' />
+          <HeadingText
+            text='/ projects'
+            emphasis='projects'
+          />
         </div>
         {/* Projects Cards */}
         {allProjects.map((item, index) => (
@@ -25,7 +31,7 @@ const MyProjectsSection = () => {
         ))}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default MyProjectsSection
+export default MyProjectsSection;

@@ -1,49 +1,68 @@
-'use client'
-import React, { useState, useEffect } from 'react'
-import Link from 'next/link'
-import Logo from './Logo'
+"use client";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
+import Logo from "./Logo";
 
 export const LinkWithHover = () => {
-  return ''
-}
+  return "";
+};
 
 const Navbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [aboutActive, setAboutActive] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "portfolio", "contact"];
+
+      sections.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionBottom = sectionTop + sectionHeight;
+
+          // Check if the user has scrolled to the section
+          if (
+            window.scrollY >= sectionTop - 200 &&
+            window.scrollY < sectionBottom
+          ) {
+            setActiveSection(sectionId);
+          }
+        }
+      });
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 350) {
         // Adjust the pixel value as needed
-        setScrolled(true)
+        setScrolled(true);
       } else {
-        setScrolled(false)
+        setScrolled(false);
       }
+    };
 
-      if (window.scrollY >= 1500 && window.scrollY <= 2323) {
-        setAboutActive(true)
-      } else {
-        setAboutActive(false)
-      }
-      // 1566 to 2323 About
-      // 2324 to Skills
-      console.log(window.scrollY)
-    }
-
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen)
-  }
+    setMenuOpen(!menuOpen);
+  };
   return (
     <nav
-      className={`bg-zinc-900 text-white  z-50 ${scrolled && 'fixed w-full'}`}
+      className={`bg-zinc-900 text-white  z-50 ${scrolled && "fixed w-full"}`}
     >
       <div className='container mx-auto flex items-center justify-between px-8 md:px-0'>
         <div>
@@ -72,32 +91,67 @@ const Navbar = () => {
         </div>
         <div className='hidden md:flex gap-8 lg:gap-4'>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
+              activeSection === "home" &&
+              "bg-light-green  text-black font-semibold"
+            }`}
           >
-            <Link className={`block lg:inline-block lg:mt-0 mx-3`} href={'/'}>
+            <Link
+              className={`block lg:inline-block lg:mt-0 mx-3`}
+              href={"/"}
+            >
               Home
             </Link>
           </div>
           <div
             className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
-              aboutActive && 'bg-light-green  text-black font-semibold'
+              activeSection === "about" &&
+              "bg-light-green  text-black font-semibold"
             }`}
           >
-            <a href='#about' className='block lg:inline-block lg:mt-0 mx-3'>
+            <a
+              href='#about'
+              className='block lg:inline-block lg:mt-0 mx-3'
+            >
               About
             </a>
           </div>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
+              activeSection === "skills" &&
+              "bg-light-green  text-black font-semibold"
+            }`}
           >
-            <a href='#projects' className='block lg:inline-block lg:mt-0 mx-3'>
+            <a
+              href='#skills'
+              className='block lg:inline-block lg:mt-0 mx-3'
+            >
+              Skills
+            </a>
+          </div>
+          <div
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
+              activeSection === "portfolio" &&
+              "bg-light-green  text-black font-semibold"
+            }`}
+          >
+            <a
+              href='#portfolio'
+              className='block lg:inline-block lg:mt-0 mx-3'
+            >
               Portfolio
             </a>
           </div>
           <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4`}
+            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
+              activeSection === "contact" &&
+              "bg-light-green  text-black font-semibold"
+            }`}
           >
-            <a href='#contact' className='block lg:inline-block lg:mt-0 mx-3'>
+            <a
+              href='#contact'
+              className='block lg:inline-block lg:mt-0 mx-3'
+            >
               Contact
             </a>
           </div>
@@ -105,7 +159,7 @@ const Navbar = () => {
         {/* Mobile links */}
         <div
           className={`${
-            menuOpen ? 'block' : 'hidden'
+            menuOpen ? "block" : "hidden"
           } md:hidden lg:mt-4 lg:space-x-4 absolute left-0 top-0 h-screen w-full bg-zinc-900 z-10 px-8`}
         >
           <div className='flex flex-col container mx-auto'>
@@ -166,7 +220,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
