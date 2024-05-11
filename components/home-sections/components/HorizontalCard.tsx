@@ -1,30 +1,15 @@
-'use client'
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { CodeBracketIcon } from '@heroicons/react/24/solid'
-// Context
-import { useGlobalContext } from '@/context/ModalContext'
+"use client";
+import { CodeBracketIcon } from "@heroicons/react/24/solid";
 
 const HorizontalCard = ({
   title,
   description,
 }: {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }) => {
-  const { isModalOpen, setIsModalOpen, setModalTitle, setModalDescription } =
-    useGlobalContext()
-  const handleCardClick = (title: string) => {
-    setModalTitle(title)
-    setModalDescription(description)
-    setIsModalOpen(!isModalOpen)
-  }
-
   return (
-    <div
-      onClick={() => handleCardClick(title)}
-      className='flex flex-col md:flex-row-reverse bg-zinc-900 p-10 rounded-lg self-start cursor-pointer hover:bg-zinc-950 transition duration-300 ease-in-out hover:scale-105 gap-5 md:gap-0'
-    >
+    <div className='flex flex-col md:flex-row-reverse bg-zinc-900 p-10 rounded-lg self-start cursor-pointer hover:bg-zinc-950 transition duration-300 ease-in-out hover:scale-105 gap-5 md:gap-0'>
       <div>
         <CodeBracketIcon className='w-12 h-12 md:w-8 md:h-8 text-light-green' />
       </div>
@@ -40,7 +25,7 @@ const HorizontalCard = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HorizontalCard
+export default HorizontalCard;
