@@ -1,60 +1,75 @@
-'use client'
-import { useState, useRef, useEffect } from 'react'
-import HeadingText from '../HeadingText'
-import Image from 'next/image'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
-import emailjs from '@emailjs/browser'
-import LoadingAnimation from '../LoadingAnimation'
+"use client";
+import { useState, useRef, useEffect } from "react";
+import HeadingText from "../HeadingText";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import emailjs from "@emailjs/browser";
+import LoadingAnimation from "../LoadingAnimation";
 
 const Contact = () => {
-  const [nameInput, setNameInput] = useState('')
-  const [emailInput, setEmailInput] = useState('')
-  const [messageInput, setMessageInput] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [isFormLoading, setIsFormLoading] = useState(false)
-  const [formSuccessMessage, setFormSuccessMessage] = useState('')
-  const formRef = useRef<any>(null)
-  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!
-  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!
+  const [nameInput, setNameInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [messageInput, setMessageInput] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isFormLoading, setIsFormLoading] = useState(false);
+  const [formSuccessMessage, setFormSuccessMessage] = useState("");
+  const formRef = useRef<any>(null);
+  const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+  const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+  const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
 
   const handleContactForm = (event: React.FormEvent<HTMLFormElement>): void => {
-    event.preventDefault()
+    event.preventDefault();
+
+    console.log(formRef.current);
+
     if (!nameInput || !emailInput || !messageInput) {
-      setErrorMessage('Please complete all the fields. Thank you!')
+      setErrorMessage("Please complete all the fields. Thank you!");
       setTimeout(() => {
-        setErrorMessage('')
-      }, 15000)
-    } else {
-      if (formRef.current) {
-        setIsFormLoading(true)
-        emailjs
-          .sendForm(serviceId, templateId, formRef.current, publicKey)
-          .then(
-            (result) => {
-              setFormSuccessMessage('Form has been submitted successfully!')
-            },
-            (error) => {
-              setErrorMessage(error)
-            }
-          )
-          .finally(() => {
-            setIsFormLoading(false)
-            setNameInput('')
-            setEmailInput('')
-            setMessageInput('')
-            setTimeout(() => {
-              setFormSuccessMessage('')
-            }, 8000)
-          })
-      }
+        setErrorMessage("");
+      }, 15000);
+      return;
     }
-  }
+
+    if (formRef.current) {
+      setIsFormLoading(true);
+
+      emailjs
+        .sendForm(serviceId, templateId, formRef.current, publicKey)
+        .then(
+          (result) => {
+            setFormSuccessMessage("Form has been submitted successfully!");
+            setTimeout(() => {
+              setFormSuccessMessage("");
+            }, 8000);
+          },
+          (error) => {
+            // Access the error message and ensure it's a string
+            setErrorMessage(
+              "There was an error submitting the form. Please try again."
+            );
+            console.error("EmailJS Error:", error);
+          }
+        )
+        .finally(() => {
+          setIsFormLoading(false);
+          setNameInput("");
+          setEmailInput("");
+          setMessageInput("");
+        });
+    }
+  };
   return (
-    <div className='bg-zinc-950' id='contact'>
+    <div
+      className='bg-zinc-950'
+      id='contact'
+    >
       <div className='container mx-auto pt-20'>
-        <HeadingText text={`Let's Talk`} emphasis='Talk' />
+        <HeadingText
+          text={`Let's Talk`}
+          emphasis='Talk'
+        />
         <div className='lg:flex gap-5 mt-7'>
           <form
             ref={formRef}
@@ -117,7 +132,10 @@ const Contact = () => {
                   {isFormLoading ? (
                     <LoadingAnimation />
                   ) : (
-                    <FontAwesomeIcon className='mr-3' icon={faPaperPlane} />
+                    <FontAwesomeIcon
+                      className='mr-3'
+                      icon={faPaperPlane}
+                    />
                   )}
                   Submit
                 </div>
@@ -143,7 +161,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

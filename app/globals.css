@@ -9,4 +9,5 @@
 
 html {
   scroll-padding-top: 120px; /* height of your navbar */
+  scroll-behavior: smooth;
 }

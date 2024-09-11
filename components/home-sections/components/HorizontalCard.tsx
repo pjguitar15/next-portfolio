@@ -20,9 +20,6 @@ const HorizontalCard = ({
         <p className='text-gray-400 mb-4 md:w-3/4 select-light-green'>
           {description}
         </p>
-        <div className='text-white font-semibold text-sm underline select-light-green'>
-          LEARN MORE
-        </div>
       </div>
     </div>
   );

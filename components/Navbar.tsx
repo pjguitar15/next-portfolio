@@ -2,10 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Logo from "./Logo";
-
-export const LinkWithHover = () => {
-  return "";
-};
+import "../app/globals.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -15,6 +12,7 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "portfolio", "contact"];
+      let currentSection = "";
 
       sections.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
@@ -23,46 +21,40 @@ const Navbar = () => {
           const sectionHeight = section.offsetHeight;
           const sectionBottom = sectionTop + sectionHeight;
 
-          // Check if the user has scrolled to the section
           if (
             window.scrollY >= sectionTop - 200 &&
             window.scrollY < sectionBottom
           ) {
-            setActiveSection(sectionId);
+            currentSection = sectionId;
           }
         }
       });
+
+      setActiveSection(currentSection);
+    };
+
+    const handleScrollNav = () => {
+      setScrolled(window.scrollY > 350);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 350) {
-        // Adjust the pixel value as needed
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollNav);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScrollNav);
     };
   }, []);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
   return (
     <nav
-      className={`bg-zinc-900 text-white  z-50 ${scrolled && "fixed w-full"}`}
+      className={`bg-zinc-900 text-white z-50 ${
+        scrolled ? "fixed w-full" : ""
+      }`}
     >
       <div className='container mx-auto flex items-center justify-between px-8 md:px-0'>
         <div>
@@ -90,71 +82,25 @@ const Navbar = () => {
           </button>
         </div>
         <div className='hidden md:flex gap-8 lg:gap-4'>
-          <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
-              activeSection === "home" &&
-              "bg-light-green  text-black font-semibold"
-            }`}
-          >
-            <Link
-              className={`block lg:inline-block lg:mt-0 mx-3`}
-              href={"/"}
-            >
-              Home
-            </Link>
-          </div>
-          <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
-              activeSection === "about" &&
-              "bg-light-green  text-black font-semibold"
-            }`}
-          >
-            <a
-              href='#about'
-              className='block lg:inline-block lg:mt-0 mx-3'
-            >
-              About
-            </a>
-          </div>
-          <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
-              activeSection === "skills" &&
-              "bg-light-green  text-black font-semibold"
-            }`}
-          >
-            <a
-              href='#skills'
-              className='block lg:inline-block lg:mt-0 mx-3'
-            >
-              Skills
-            </a>
-          </div>
-          <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
-              activeSection === "portfolio" &&
-              "bg-light-green  text-black font-semibold"
-            }`}
-          >
-            <a
-              href='#portfolio'
-              className='block lg:inline-block lg:mt-0 mx-3'
-            >
-              Portfolio
-            </a>
-          </div>
-          <div
-            className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
-              activeSection === "contact" &&
-              "bg-light-green  text-black font-semibold"
-            }`}
-          >
-            <a
-              href='#contact'
-              className='block lg:inline-block lg:mt-0 mx-3'
-            >
-              Contact
-            </a>
-          </div>
+          {["home", "about", "skills", "portfolio", "contact"].map(
+            (section) => (
+              <div
+                key={section}
+                className={`relative w-fit after:block mx-auto after:content-[''] after:absolute after:h-[3px] after:bg-light-green after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center py-4 ${
+                  activeSection === section
+                    ? "bg-light-green text-black font-semibold"
+                    : ""
+                }`}
+              >
+                <Link
+                  href={`#${section}`}
+                  className='block lg:inline-block lg:mt-0 mx-3'
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </Link>
+              </div>
+            )
+          )}
         </div>
         {/* Mobile links */}
         <div
@@ -185,36 +131,18 @@ const Navbar = () => {
               </button>
             </div>
             <div className='flex flex-col'>
-              <div className='w-full text-center'>
-                <a
-                  onClick={toggleMenu}
-                  href='/'
-                  className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
-                >
-                  Home
-                </a>
-                <a
-                  onClick={toggleMenu}
-                  href='#about'
-                  className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
-                >
-                  About
-                </a>
-                <a
-                  onClick={toggleMenu}
-                  href='#projects'
-                  className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
-                >
-                  Portfolio
-                </a>
-                <a
-                  onClick={toggleMenu}
-                  href='#contact'
-                  className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
-                >
-                  Contact
-                </a>
-              </div>
+              {["home", "about", "skills", "portfolio", "contact"].map(
+                (section) => (
+                  <Link
+                    key={section}
+                    onClick={toggleMenu}
+                    href={`#${section}`}
+                    className='block lg:inline-block mt-2 lg:mt-0 lg:ml-4'
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </Link>
+                )
+              )}
             </div>
           </div>
         </div>

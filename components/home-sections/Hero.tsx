@@ -22,7 +22,7 @@ const Hero = () => {
         <div className='flex lg:flex-row flex-col-reverse'>
           <div className='lg:w-7/12 flex flex-col justify-center items-center lg:items-start pt-8 pb-16 lg:py-36'>
             <div>
-              <Badge title='frontend developer' />
+              <Badge title='full stack developer' />
             </div>
             <div className='text-center lg:text-start'>
               <HeadingText
@@ -35,15 +35,19 @@ const Hero = () => {
               />
             </div>
             <p className='text-gray-300 text-lg font-normal mt-3 leading-8 mb-9 w-5/6 select-light-green text-center lg:text-left'>
-              Hi, I am Philcob! I am a frontend developer.
-              <strong className='select-light-green'> ReactJS/NextJS </strong>is
-              my framework of choice. I build and code beautifully simple
-              things, and I love what I do.
+              Hi, I am Philcob! An experienced{" "}
+              <strong className='select-light-green'>
+                {" "}
+                Full Stack Developer
+              </strong>{" "}
+              with a strong background in{" "}
+              <strong className='select-light-green'> MERN stack </strong>
+              and a passion for creating dynamic web applications.
             </p>
             <div className='flex flex-col md:flex-row gap-4 items-center'>
               <MyButton
                 title='Check out my Portfolio'
-                link='#projects'
+                link='#portfolio'
               />
               <CVButton />
             </div>

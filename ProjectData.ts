@@ -1,11 +1,19 @@
 export const allProjects = [
+  // {
+  //   title: "ILTP Website",
+  //   description: `Ever heard of the International Leadership Training Program (ILTP)? Well, I built their website using ReactJS! It's this cool volunteer organization based in the US. Here's the kicker: I tackled the whole website backend myself, since I was still learning about Headless CMS. That was quite the adventure, let me tell you. But hey, the result? A snazzy website that showcases my problem-solving skills, adaptability, and commitment to creating awesome user experiences.`,
+  //   tags: ["ReactJS", "Bootstrap", "Firebase", "PayPal Integration"],
+  //   imagePath: "/iltp-preview.jpg",
+  //   projectLink: "https://iltp.org/",
+  //   githubLink: "https://github.com/pjguitar15/iltpwebsite",
+  // },
   {
-    title: "ILTP Website",
-    description: `Ever heard of the International Leadership Training Program (ILTP)? Well, I built their website using ReactJS! It's this cool volunteer organization based in the US. Here's the kicker: I tackled the whole website backend myself, since I was still learning about Headless CMS. That was quite the adventure, let me tell you. But hey, the result? A snazzy website that showcases my problem-solving skills, adaptability, and commitment to creating awesome user experiences.`,
-    tags: ["ReactJS", "Bootstrap", "Firebase", "PayPal Integration"],
-    imagePath: "/iltp-preview.jpg",
-    projectLink: "https://iltp.org/",
-    githubLink: "https://github.com/pjguitar15/iltpwebsite",
+    title: "DevGuide Blog App",
+    description: `DevGuide.Blog is a React based application which is one of my personal project I worked hard for. This app I built allows users two write and publish dev related content on the Internet. One of the features built on this is that, it is fully functional and dynamic. A dashboard is created to allow users configure things such as blog creation, check the analytics, and update their accounts from the settings.`,
+    tags: ["ReactJS", "TailwindCSS", "TypeScript", "Firebase"],
+    imagePath: "/devblog.png",
+    projectLink: "https://react-blog-app-sand.vercel.app/",
+    githubLink: "https://github.com/pjguitar15/react-blog-app",
   },
   {
     title: "Martial Arts Scoring System",
@@ -17,12 +25,14 @@ I developed an app using ReactJS, TypeScript, Firebase, and TailwindCSS that fac
     githubLink: "https://github.com/pjguitar15/timd-pointing-system",
   },
   {
-    title: "DevGuide Blog App",
-    description: `DevGuide.Blog is a React based application which is one of my personal project I worked hard for. This app I built allows users two write and publish dev related content on the Internet. One of the features built on this is that, it is fully functional and dynamic. A dashboard is created to allow users configure things such as blog creation, check the analytics, and update their accounts from the settings.`,
-    tags: ["ReactJS", "TailwindCSS", "TypeScript", "Firebase"],
-    imagePath: "/devblog.png",
-    projectLink: "https://react-blog-app-sand.vercel.app/",
-    githubLink: "https://github.com/pjguitar15/react-blog-app",
+    title: "Client Wedding Gallery Website",
+    description: `
+
+I created a static wedding gallery website using React, TypeScript, and TailwindCSS. This project showcases elegant wedding photos in a responsive and visually appealing layout. Leveraging React and TypeScript ensures a dynamic and robust user experience, while TailwindCSS provides a sleek and adaptable design, making the gallery both functional and beautiful across all devices.`,
+    tags: ["ReactJS", "TailwindCSS", "TypeScript"],
+    imagePath: "/junmay.png",
+    projectLink: "https://junmay-website.vercel.app/",
+    githubLink: "https://github.com/pjguitar15/junmay-website",
   },
   {
     title: "Ingredient Savvy",
@@ -75,11 +85,11 @@ I developed an app using ReactJS, TypeScript, Firebase, and TailwindCSS that fac
   //   githubLink: 'https://github.com/pjguitar15/react-guitar-ecommerce',
   // },
   // {
-  //   title: 'Movie App',
+  //   title: "Movie App",
   //   description: `Here's one of my personal projects where I built a website using ReactJs and Tailwind CSS, incorporating the TMDB Movie API. This straightforward yet engaging application allows users to seamlessly retrieve data from the API, dynamically load content, and utilize a convenient search feature.`,
-  //   tags: ['NextJS', 'API', 'Tailwindcss'],
-  //   imagePath: '/movie-app.jpg',
-  //   projectLink: 'https://next-movie-app-kohl.vercel.app/',
-  //   githubLink: 'https://github.com/pjguitar15/next-movie-app',
+  //   tags: ["NextJS", "API", "Tailwindcss"],
+  //   imagePath: "/movie-app.jpg",
+  //   projectLink: "https://next-movie-app-kohl.vercel.app/",
+  //   githubLink: "https://github.com/pjguitar15/next-movie-app",
   // },
 ];
