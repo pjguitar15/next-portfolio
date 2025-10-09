@@ -13,7 +13,7 @@ const Logo = () => {
         height={500}
       />
       <div className='text-white font-bold text-xl ml-3'>
-        Phil <span className='text-light-green'>Codes</span>
+        Phil <span className='text-teal-400'>Codes</span>
       </div>
     </Link>
   )
