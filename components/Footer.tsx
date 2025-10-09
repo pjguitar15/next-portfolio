@@ -62,13 +62,13 @@ const Footer = () => {
             <div className='mb-6'>
               <Logo />
             </div>
-            <p className='text-zinc-300 text-lg mb-6 max-w-md'>
+            <p className='text-zinc-300 text-sm mb-6 max-w-md'>
               Software engineer focused on shipping useful features, improving
               performance, and smoothing out UI rough edges.
             </p>
 
             {/* Contact Info */}
-            <div className='space-y-3'>
+            <div className='space-y-3 text-sm'>
               <div className='flex items-center gap-3 text-zinc-300'>
                 <MapPinIcon className='w-5 h-5 text-teal-400' />
                 <span>Trece Martires City, Cavite</span>
@@ -93,13 +93,13 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <div>
-            <h3 className='text-lg font-semibold mb-6'>Navigation</h3>
+            <h3 className='text-sm font-semibold mb-6'>Navigation</h3>
             <ul className='space-y-3'>
               {navigationLinks.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className={`text-zinc-300 hover:text-white transition-colors duration-200 flex items-center group ${
+                    className={`text-zinc-300 hover:text-white transition-colors text-xs duration-200 flex items-center group ${
                       isActivePage(link.href) ? 'text-teal-400' : ''
                     }`}
                   >
@@ -115,9 +115,9 @@ const Footer = () => {
 
           {/* Connect Section */}
           <div>
-            <h3 className='text-lg font-semibold mb-6'>Connect</h3>
+            <h3 className='text-sm font-semibold mb-6'>Connect</h3>
             <div className='space-y-4'>
-              <p className='text-zinc-300 text-sm'>
+              <p className='text-zinc-300 text-xs'>
                 Follow my journey and see my latest work
               </p>
 

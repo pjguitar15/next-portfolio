@@ -1,26 +1,48 @@
 'use client'
 import React from 'react'
-import Image from 'next/image'
+import {
+  FaBootstrap,
+  FaCss3Alt,
+  FaGithub,
+  FaHtml5,
+  FaJsSquare,
+  FaReact,
+  FaWordpress,
+} from 'react-icons/fa'
+import {
+  SiMongodb,
+  SiNestjs,
+  SiNextdotjs,
+  SiPostman,
+  SiTailwindcss,
+  SiTypescript,
+} from 'react-icons/si'
+
+type Skill = {
+  name: string
+  Icon: React.ComponentType<{ size?: number; className?: string }>
+  colorClass: string
+}
 
 const MySkillsSection = () => {
-  const skills = [
-    { name: 'HTML', icon: '/logos/html.png' },
-    { name: 'CSS', icon: '/logos/css.png' },
-    { name: 'JavaScript', icon: '/logos/javascript.png' },
-    { name: 'TypeScript', icon: '/logos/typescript.png' },
-    { name: 'React', icon: '/logos/reactjs-black.png' },
-    { name: 'Next.js', icon: '/logos/nextjs.png' },
-    { name: 'NestJS', icon: '/logos/nextjs.png' },
-    { name: 'TailwindCSS', icon: '/logos/tailwind.png' },
-    { name: 'Bootstrap', icon: '/logos/bootstrap.png' },
-    { name: 'MongoDB', icon: '/logos/mongodb-black.png' },
-    { name: 'Git/GitHub', icon: '/logos/github.png' },
-    { name: 'Postman', icon: '/logos/postman.png' },
-    { name: 'WordPress', icon: '/logos/wordpress.png' },
+  const skills: Skill[] = [
+    { name: 'HTML', Icon: FaHtml5, colorClass: 'text-orange-500' },
+    { name: 'CSS', Icon: FaCss3Alt, colorClass: 'text-blue-500' },
+    { name: 'JavaScript', Icon: FaJsSquare, colorClass: 'text-yellow-400' },
+    { name: 'TypeScript', Icon: SiTypescript, colorClass: 'text-blue-500' },
+    { name: 'React', Icon: FaReact, colorClass: 'text-cyan-400' },
+    { name: 'Next.js', Icon: SiNextdotjs, colorClass: 'text-gray-200' },
+    { name: 'NestJS', Icon: SiNestjs, colorClass: 'text-red-500' },
+    { name: 'TailwindCSS', Icon: SiTailwindcss, colorClass: 'text-teal-400' },
+    { name: 'Bootstrap', Icon: FaBootstrap, colorClass: 'text-purple-500' },
+    { name: 'MongoDB', Icon: SiMongodb, colorClass: 'text-green-500' },
+    { name: 'Git/GitHub', Icon: FaGithub, colorClass: 'text-gray-300' },
+    { name: 'Postman', Icon: SiPostman, colorClass: 'text-orange-400' },
+    { name: 'WordPress', Icon: FaWordpress, colorClass: 'text-blue-400' },
   ]
 
-  // Duplicate the array for seamless looping
-  const duplicatedSkills = [...skills, ...skills]
+  // Two separate duplicated rows so we can reverse one safely
+  const rowTop = [...skills, ...skills]
 
   return (
     <section className='py-20 bg-gradient-to-br from-zinc-950 via-zinc-800 to-zinc-950 overflow-hidden'>
@@ -118,44 +140,19 @@ const MySkillsSection = () => {
           {/* Top Row - Left to Right */}
           <div className='flex overflow-hidden'>
             <div className='flex animate-marquee'>
-              {duplicatedSkills.map((skill, index) => (
-                <div key={`top-${index}`} className='flex-shrink-0 mx-6 group'>
-                  <div className='w-24 h-24 bg-zinc-800/60 backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center p-4 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:bg-teal-900/30 border border-zinc-700 group-hover:border-teal-700'>
-                    <div className='relative w-12 h-12 mb-2'>
-                      <Image
-                        src={skill.icon}
-                        alt={skill.name}
-                        fill
-                        className='object-contain filter group-hover:brightness-110'
-                      />
-                    </div>
-                    <span className='text-xs font-medium text-zinc-300 text-center group-hover:text-teal-400 transition-colors'>
-                      {skill.name}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Bottom Row - Right to Left */}
-          <div className='flex overflow-hidden mt-8'>
-            <div className='flex animate-marquee-reverse'>
-              {duplicatedSkills.reverse().map((skill, index) => (
+              {rowTop.map((skill, index) => (
                 <div
-                  key={`bottom-${index}`}
+                  key={`top-${index}-${skill.name}`}
                   className='flex-shrink-0 mx-6 group'
                 >
-                  <div className='w-24 h-24 bg-zinc-800/60 backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center p-4 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:bg-cyan-900/30 border border-zinc-700 group-hover:border-cyan-700'>
-                    <div className='relative w-12 h-12 mb-2'>
-                      <Image
-                        src={skill.icon}
-                        alt={skill.name}
-                        fill
-                        className='object-contain filter group-hover:brightness-110'
-                      />
+                  <div className='w-24 h-24 bg-zinc-800/60 backdrop-blur-sm rounded-2xl shadow-lg flex flex-col items-center justify-center p-4 transition-all duration-300 group-hover:shadow-xl group-hover:scale-110 group-hover:bg-teal-900/30 border border-zinc-700 group-hover:border-teal-700'>
+                    <div
+                      className={`mb-2 transition-transform duration-300 group-hover:scale-110 ${skill.colorClass}`}
+                      aria-label={skill.name}
+                    >
+                      <skill.Icon size={48} />
                     </div>
-                    <span className='text-xs font-medium text-zinc-300 text-center group-hover:text-cyan-400 transition-colors'>
+                    <span className='text-xs font-medium text-zinc-300 text-center group-hover:text-teal-400 transition-colors'>
                       {skill.name}
                     </span>
                   </div>

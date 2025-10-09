@@ -1,26 +1,33 @@
 "use client";
 import HeadingText from "@/components/HeadingText";
-import React from "react";
+import React, { useState, useEffect } from 'react'
 import HorizontalCard from "./HorizontalCard";
 import Badge from "@/components/Badge";
 
 const AboutMeSideBySide = () => {
+  const [age, setAge] = useState<number | null>(null)
+
   const calculateAge = () => {
-    const birthDate = new Date("1998-05-15");
-    const today = new Date();
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const monthDiff = today.getMonth() - birthDate.getMonth();
+    const birthDate = new Date('1998-05-15')
+    const today = new Date()
+    let calculatedAge = today.getFullYear() - birthDate.getFullYear()
+    const monthDiff = today.getMonth() - birthDate.getMonth()
 
     // Adjust age if birthday hasn't occurred yet this year
     if (
       monthDiff < 0 ||
       (monthDiff === 0 && today.getDate() < birthDate.getDate())
     ) {
-      age--;
+      calculatedAge--
     }
 
-    return age;
-  };
+    return calculatedAge
+  }
+
+  useEffect(() => {
+    // Calculate age only on client side to avoid hydration mismatch
+    setAge(calculateAge())
+  }, [])
   return (
     <div className='container mx-auto px-10 md:px-0'>
       <div className='lg:flex flex-col md:flex-row gap-12'>
@@ -41,17 +48,14 @@ const AboutMeSideBySide = () => {
         </div>
         <div className='pt-10 lg:pt-0 lg:px-10 lg:w-1/2 flex-1'>
           <div>
-            <HeadingText
-              text='About Me'
-              emphasis='Me'
-            />
+            <HeadingText text='About Me' emphasis='Me' />
             <p className='text-gray-300 text-md font-normal mt-3 leading-8 mb-9 select-light-green'>
-              Hey there! I am Philcob Suzuki Josol, a{" "}
-              <span className='font-bold'>{calculateAge()}-year-old </span>
+              Hey there! I am Philcob Suzuki Josol, a{' '}
+              <span className='font-bold'>{age || '26'}-year-old </span>
               enthusiast from the vibrant Philippines. My unique heritage is a
               blend of <span className='font-bold'>
                 Japanese and Filipino
-              </span>{" "}
+              </span>{' '}
               cultures, which has given me a diverse perspective and a taste for
               creativity. I also love
               <span className='font-bold'> playing guitar </span>
@@ -74,7 +78,7 @@ const AboutMeSideBySide = () => {
         </div>
       </div>
     </div>
-  );
+  )
 };
 
 export default AboutMeSideBySide;

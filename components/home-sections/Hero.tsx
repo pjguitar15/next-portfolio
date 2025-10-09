@@ -11,8 +11,10 @@ import { MapPinIcon, PhoneIcon, GlobeAltIcon } from '@heroicons/react/24/solid'
 
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
+    setIsMounted(true)
     setIsVisible(true)
   }, [])
 
@@ -36,29 +38,27 @@ const Hero = () => {
             }`}
           >
             {/* Status Badge */}
-            <div className='inline-block px-4 py-2 rounded-full bg-teal-500 text-white text-sm font-bold'>
+            <div className='inline-block px-4 py-2 rounded-full bg-teal-500 text-white text-xs font-bold'>
               SOFTWARE ENGINEER
             </div>
 
             {/* Main Heading */}
             <div className='space-y-4'>
-              <h1 className='text-5xl lg:text-6xl font-bold text-white leading-tight'>
-                <span className='block'>I design, build, and ship</span>
+              <h1 className='text-4xl lg:text-5xl font-bold text-white leading-tight'>
                 <span className='block'>
-                  reliable software{' '}
+                  I design, build, and ship reliable software{' '}
                   <span className='text-teal-400'>end-to-end</span>
                 </span>
               </h1>
             </div>
 
             {/* Description */}
-            {/* Description */}
-            <p className='text-lg text-gray-300 leading-relaxed max-w-2xl'>
-              Hi, I&apos;m Philcob! An experienced{' '}
+            <p className='text-md text-gray-300 leading-relaxed max-w-2xl'>
+              Hi, I&apos;m Phil! An experienced{' '}
               <span className='font-semibold text-white'>
-                Software Engineer
+                Software Engineer from the Philippines.
               </span>{' '}
-              specializing in scalable web applications. I transform complex
+              I specialize in scalable web applications. I transform complex
               business requirements into elegant, high-performance solutions
               using modern technologies like React, Node.js, and cloud
               platforms.
@@ -68,24 +68,25 @@ const Hero = () => {
             <div className='flex flex-col sm:flex-row gap-4 pt-6'>
               <Link
                 href='/projects'
-                className='px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 font-medium text-center'
+                className='inline-flex items-center justify-center gap-2 px-6 py-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 font-medium text-center'
               >
-                View My Portfolio
+                <DocumentTextIcon className='w-5 h-5' />
+                <span>View My Portfolio</span>
               </Link>
 
-              <a
-                href='/philcob-resume.pdf'
-                download
-                className='px-6 py-3 border-2 border-teal-500 text-teal-400 rounded-lg hover:bg-teal-500 hover:text-white transition-all duration-300 font-medium text-center'
+              <Link
+                href='/about'
+                className='inline-flex items-center justify-center gap-2 px-6 py-3 border border-white text-white font-semibold rounded-lg hover:bg-white hover:text-teal-600 transition-colors'
               >
-                Download Resume
-              </a>
+                <GlobeAltIcon className='w-5 h-5' />
+                <span>Professional Experiences</span>
+              </Link>
             </div>
           </div>
 
           {/* Right Content - Image */}
           <div
-            className={`relative transition-all duration-1000 delay-300 ${
+            className={`hidden lg:block relative transition-all duration-1000 delay-300 ${
               isVisible
                 ? 'opacity-100 translate-x-0'
                 : 'opacity-0 translate-x-10'
@@ -108,17 +109,6 @@ const Hero = () => {
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce'>
-          <Link
-            href='/about'
-            className='flex flex-col items-center text-gray-500 hover:text-gray-700 transition-colors'
-          >
-            <span className='text-xs mb-2'>Learn more about me</span>
-            <ArrowDownIcon className='w-4 h-4' />
-          </Link>
         </div>
       </div>
 

@@ -76,22 +76,6 @@ const AboutMe = () => {
   return (
     <section className='min-h-screen bg-zinc-950 py-20'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Header */}
-        <div className='text-center mb-16'>
-          <h1 className='text-4xl lg:text-5xl font-bold text-zinc-100 mb-6'>
-            About{' '}
-            <span className='bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent'>
-              Me
-            </span>
-          </h1>
-          <p className='text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed'>
-            Software engineer focused on shipping useful features, improving
-            performance, and smoothing out UI rough edges. Trusted to own work
-            end-to-end and collaborate well across teams.
-          </p>
-        </div>
-
-        {/* Main Content Grid */}
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-12'>
           {/* Professional Experience */}
           <div className='lg:col-span-2 space-y-8'>
@@ -120,11 +104,11 @@ const AboutMe = () => {
                       <span>{exp.period}</span>
                     </div>
                   </div>
-                  <ul className='space-y-2'>
+                  <ul className='space-y-3'>
                     {exp.achievements.map((achievement, i) => (
                       <li
                         key={i}
-                        className='text-zinc-300 flex items-start gap-2'
+                        className='text-zinc-300 flex items-start gap-2 text-sm'
                       >
                         <div className='w-1.5 h-1.5 bg-teal-400 rounded-full mt-2 flex-shrink-0'></div>
                         <span>{achievement}</span>

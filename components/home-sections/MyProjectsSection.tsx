@@ -1,18 +1,31 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
   ArrowTopRightOnSquareIcon,
   CodeBracketIcon,
   EyeIcon,
+  XMarkIcon,
 } from '@heroicons/react/24/outline'
 import { allProjects } from '@/ProjectData'
 
+type Project = {
+  title: string
+  description: string
+  imagePath: string
+  tags: string[]
+  projectLink?: string
+  githubLink?: string
+}
+
 const MyProjectsSection = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
+  const [open, setOpen] = useState(false)
+  const [selected, setSelected] = useState<Project | null>(null)
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const dialogRef = useRef<HTMLDivElement | null>(null)
 
-  // Define bento grid layout patterns
   const getGridItemClass = (index: number) => {
     const patterns = [
       'md:col-span-2 md:row-span-2', // Large featured
@@ -25,15 +38,48 @@ const MyProjectsSection = () => {
   }
 
   const getImageHeight = (index: number) => {
-    const heights = [
-      'h-80 md:h-96', // Large featured
-      'h-48', // Medium
-      'h-48', // Medium
-      'h-64', // Wide
-      'h-80', // Tall
-    ]
+    const heights = ['h-80 md:h-96', 'h-48', 'h-48', 'h-64', 'h-80']
     return heights[index % heights.length]
   }
+
+  const openModal = (project: Project, trigger?: HTMLButtonElement | null) => {
+    setSelected(project)
+    setOpen(true)
+    if (trigger) triggerRef.current = trigger
+  }
+
+  const closeModal = () => {
+    setOpen(false)
+  }
+
+  // Body scroll lock + ESC to close + focus management
+  useEffect(() => {
+    if (open) {
+      const prevOverflow = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+
+      // focus first focusable inside modal
+      const t = setTimeout(() => {
+        const focusable = dialogRef.current?.querySelector<HTMLElement>(
+          'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
+        )
+        focusable?.focus()
+      }, 0)
+
+      const onKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeModal()
+      }
+      window.addEventListener('keydown', onKeyDown)
+
+      return () => {
+        document.body.style.overflow = prevOverflow
+        window.removeEventListener('keydown', onKeyDown)
+        clearTimeout(t)
+        // return focus to the trigger
+        triggerRef.current?.focus()
+      }
+    }
+  }, [open])
 
   return (
     <section className='py-20 bg-zinc-950'>
@@ -46,7 +92,7 @@ const MyProjectsSection = () => {
               Projects
             </span>
           </h2>
-          <p className='text-xl text-zinc-400 max-w-3xl mx-auto'>
+          <p className='text-md text-zinc-400 max-w-3xl mx-auto'>
             A showcase of applications I&apos;ve built using modern web
             technologies
           </p>
@@ -54,7 +100,7 @@ const MyProjectsSection = () => {
 
         {/* Bento Grid */}
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mb-16'>
-          {allProjects.map((project, index) => (
+          {allProjects.map((project: Project, index: number) => (
             <div
               key={index}
               className={`group relative overflow-hidden rounded-2xl bg-zinc-800/50 border border-zinc-700 hover:border-zinc-600 transition-all duration-300 hover:shadow-2xl backdrop-blur-sm ${getGridItemClass(
@@ -89,24 +135,28 @@ const MyProjectsSection = () => {
                       : 'opacity-0 -translate-y-2'
                   }`}
                 >
-                  <a
-                    href={project.projectLink}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='p-2 bg-zinc-800/90 backdrop-blur-sm rounded-lg hover:bg-zinc-700 transition-colors border border-zinc-600'
-                    title='View Live Project'
-                  >
-                    <ArrowTopRightOnSquareIcon className='w-4 h-4 text-zinc-300' />
-                  </a>
-                  <a
-                    href={project.githubLink}
-                    target='_blank'
-                    rel='noopener noreferrer'
-                    className='p-2 bg-zinc-800/90 backdrop-blur-sm rounded-lg hover:bg-zinc-700 transition-colors border border-zinc-600'
-                    title='View Source Code'
-                  >
-                    <CodeBracketIcon className='w-4 h-4 text-zinc-300' />
-                  </a>
+                  {project.projectLink && (
+                    <a
+                      href={project.projectLink}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='p-2 bg-zinc-800/90 backdrop-blur-sm rounded-lg hover:bg-zinc-700 transition-colors border border-zinc-600'
+                      title='View Live Project'
+                    >
+                      <ArrowTopRightOnSquareIcon className='w-4 h-4 text-zinc-300' />
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a
+                      href={project.githubLink}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='p-2 bg-zinc-800/90 backdrop-blur-sm rounded-lg hover:bg-zinc-700 transition-colors border border-zinc-600'
+                      title='View Source Code'
+                    >
+                      <CodeBracketIcon className='w-4 h-4 text-zinc-300' />
+                    </a>
+                  )}
                 </div>
 
                 {/* Project Info Overlay */}
@@ -132,7 +182,7 @@ const MyProjectsSection = () => {
                     )}
                   </div>
 
-                  {/* Description - only show on larger cards */}
+                  {/* Description - only on larger cards */}
                   {(index % 5 === 0 || index % 5 === 3) && (
                     <p
                       className={`text-white/90 text-sm leading-relaxed transition-all duration-300 ${
@@ -154,7 +204,12 @@ const MyProjectsSection = () => {
                       : 'opacity-0 translate-x-4'
                   }`}
                 >
-                  <button className='flex items-center gap-2 px-4 py-2 bg-zinc-800/90 text-zinc-300 rounded-lg font-medium hover:bg-zinc-700 transition-colors border border-zinc-600'>
+                  <button
+                    className='flex items-center gap-2 px-4 py-2 bg-zinc-800/90 text-zinc-300 rounded-lg font-medium hover:bg-zinc-700 transition-colors border border-zinc-600'
+                    onClick={(e) => openModal(project, e.currentTarget)}
+                    aria-haspopup='dialog'
+                    aria-controls='project-details-dialog'
+                  >
                     <EyeIcon className='w-4 h-4' />
                     <span className='text-sm'>View Details</span>
                   </button>
@@ -166,27 +221,21 @@ const MyProjectsSection = () => {
 
         {/* Statistics */}
         <div className='grid grid-cols-2 md:grid-cols-4 gap-8 py-16 border-t border-zinc-700'>
-          <div className='text-center'>
-            <div className='text-3xl font-bold text-teal-400 mb-2'>
-              {allProjects.length}+
-            </div>
-            <div className='text-zinc-400 text-sm'>Projects Completed</div>
-          </div>
-          <div className='text-center'>
-            <div className='text-3xl font-bold text-cyan-400 mb-2'>10+</div>
-            <div className='text-zinc-400 text-sm'>Technologies Used</div>
-          </div>
-          <div className='text-center'>
-            <div className='text-3xl font-bold text-green-400 mb-2'>3+</div>
-            <div className='text-zinc-400 text-sm'>Years Experience</div>
-          </div>
-          <div className='text-center'>
-            <div className='text-3xl font-bold text-orange-400 mb-2'>100%</div>
-            <div className='text-zinc-400 text-sm'>Client Satisfaction</div>
-          </div>
+          <Stat
+            value={`${allProjects.length}+`}
+            label='Projects Completed'
+            color='text-teal-400'
+          />
+          <Stat value='10+' label='Technologies Used' color='text-cyan-400' />
+          <Stat value='3+' label='Years Experience' color='text-green-400' />
+          <Stat
+            value='100%'
+            label='Client Satisfaction'
+            color='text-orange-400'
+          />
         </div>
 
-        {/* Call to Action */}
+        {/* CTA */}
         <div className='text-center'>
           <div className='bg-gradient-to-r from-zinc-800/80 to-zinc-700/80 rounded-2xl p-8 border border-zinc-600 backdrop-blur-sm'>
             <h3 className='text-2xl font-bold text-zinc-100 mb-4'>
@@ -216,7 +265,118 @@ const MyProjectsSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal */}
+      {open && selected && (
+        <div
+          id='project-details-dialog'
+          role='dialog'
+          aria-modal='true'
+          className='fixed inset-0 z-50 flex items-center justify-center p-4'
+        >
+          {/* Overlay */}
+          <div
+            className='absolute inset-0 bg-black/70 backdrop-blur-sm'
+            onClick={closeModal}
+          />
+
+          {/* Dialog */}
+          <div
+            ref={dialogRef}
+            className='relative z-10 w-full max-w-3xl rounded-2xl border border-zinc-700 bg-zinc-900/95 shadow-2xl'
+          >
+            {/* Header */}
+            <div className='flex items-center justify-between px-6 py-4 border-b border-zinc-700'>
+              <h4 className='text-lg font-semibold text-white'>
+                {selected.title}
+              </h4>
+              <button
+                onClick={closeModal}
+                className='p-2 rounded-lg hover:bg-zinc-800 border border-transparent hover:border-zinc-700 transition'
+                aria-label='Close dialog'
+              >
+                <XMarkIcon className='w-5 h-5 text-zinc-300' />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className='grid md:grid-cols-2 gap-0 md:gap-6 p-6'>
+              <div className='relative h-56 md:h-full rounded-xl overflow-hidden border border-zinc-700'>
+                <Image
+                  src={selected.imagePath}
+                  alt={selected.title}
+                  fill
+                  className='object-cover'
+                  sizes='(max-width: 768px) 100vw, 50vw'
+                  priority
+                />
+              </div>
+
+              <div className='flex flex-col'>
+                <p className='text-zinc-300 leading-relaxed mb-4'>
+                  {selected.description}
+                </p>
+
+                {selected.tags?.length > 0 && (
+                  <div className='flex flex-wrap gap-2 mb-6'>
+                    {selected.tags.map((t, i) => (
+                      <span
+                        key={i}
+                        className='px-2 py-1 bg-zinc-800/60 text-zinc-300 text-xs rounded-full border border-zinc-600'
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div className='mt-auto flex flex-col sm:flex-row gap-3'>
+                  {selected.projectLink && (
+                    <a
+                      href={selected.projectLink}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center justify-center gap-2 px-4 py-2 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition'
+                    >
+                      <ArrowTopRightOnSquareIcon className='w-4 h-4' />
+                      Live Project
+                    </a>
+                  )}
+                  {selected.githubLink && (
+                    <a
+                      href={selected.githubLink}
+                      target='_blank'
+                      rel='noopener noreferrer'
+                      className='inline-flex items-center justify-center gap-2 px-4 py-2 border border-zinc-600 text-zinc-300 font-medium rounded-lg hover:bg-zinc-800 transition'
+                    >
+                      <CodeBracketIcon className='w-4 h-4' />
+                      Source Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
+  )
+}
+
+function Stat({
+  value,
+  label,
+  color,
+}: {
+  value: string
+  label: string
+  color: string
+}) {
+  return (
+    <div className='text-center'>
+      <div className={`text-3xl font-bold ${color} mb-2`}>{value}</div>
+      <div className='text-zinc-400 text-sm'>{label}</div>
+    </div>
   )
 }
 

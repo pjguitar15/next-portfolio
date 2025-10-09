@@ -115,7 +115,7 @@ const Contact = () => {
               Connect
             </span>
           </h1>
-          <p className='text-xl text-zinc-400 max-w-3xl mx-auto'>
+          <p className='text-md text-zinc-400 max-w-3xl mx-auto'>
             I&apos;m always interested in discussing new opportunities and
             exciting projects. Feel free to reach out if you&apos;d like to
             collaborate.
