@@ -101,10 +101,12 @@ const ProjectItem = ({
                 height={500}
               />
             ) : (
-              <img
+              <Image
                 className='object-cover hover:scale-105 transition duration-300 ease-in-out'
                 src='https://media.geeksforgeeks.org/wp-content/uploads/20230519095635/How-to-Deploy-React-App-on-Netlify-Using-Github.png'
                 alt='test'
+                width={500}
+                height={300}
               />
             )}
           </div>

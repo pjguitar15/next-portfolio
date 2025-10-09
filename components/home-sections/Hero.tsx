@@ -54,7 +54,7 @@ const Hero = () => {
             {/* Description */}
             {/* Description */}
             <p className='text-lg text-gray-300 leading-relaxed max-w-2xl'>
-              Hi, I'm Philcob! An experienced{' '}
+              Hi, I&apos;m Philcob! An experienced{' '}
               <span className='font-semibold text-white'>
                 Software Engineer
               </span>{' '}

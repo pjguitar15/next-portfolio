@@ -178,7 +178,7 @@ const MySkillsSection = () => {
             href='/contact'
             className='inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white font-semibold rounded-lg hover:from-teal-700 hover:to-cyan-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5'
           >
-            Let's Work Together
+            Let&apos;s Work Together
           </a>
         </div>
       </div>

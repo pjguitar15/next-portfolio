@@ -225,8 +225,9 @@ const AboutMe = () => {
               Ready to Build Something Amazing?
             </h2>
             <p className='text-teal-100 mb-6 max-w-2xl mx-auto'>
-              I'm always interested in discussing new opportunities and exciting
-              projects. Feel free to reach out if you'd like to collaborate.
+              I&apos;m always interested in discussing new opportunities and
+              exciting projects. Feel free to reach out if you&apos;d like to
+              collaborate.
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <a

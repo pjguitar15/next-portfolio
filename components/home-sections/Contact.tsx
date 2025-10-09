@@ -110,14 +110,15 @@ const Contact = () => {
         {/* Header */}
         <div className='text-center mb-16'>
           <h1 className='text-4xl lg:text-5xl font-bold text-zinc-100 mb-6'>
-            Let's{' '}
+            Let&apos;s{' '}
             <span className='bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent'>
               Connect
             </span>
           </h1>
           <p className='text-xl text-zinc-400 max-w-3xl mx-auto'>
-            I'm always interested in discussing new opportunities and exciting
-            projects. Feel free to reach out if you'd like to collaborate.
+            I&apos;m always interested in discussing new opportunities and
+            exciting projects. Feel free to reach out if you&apos;d like to
+            collaborate.
           </p>
         </div>
 
@@ -129,8 +130,8 @@ const Contact = () => {
                 Send me a message
               </h2>
               <p className='text-zinc-400 mb-8'>
-                I'd love to hear from you. Send me a message and I'll respond as
-                soon as possible.
+                I&apos;d love to hear from you. Send me a message and I&apos;ll
+                respond as soon as possible.
               </p>
 
               <form ref={formRef} onSubmit={handleSubmit} className='space-y-6'>

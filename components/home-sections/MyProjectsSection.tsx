@@ -47,7 +47,8 @@ const MyProjectsSection = () => {
             </span>
           </h2>
           <p className='text-xl text-zinc-400 max-w-3xl mx-auto'>
-            A showcase of applications I've built using modern web technologies
+            A showcase of applications I&apos;ve built using modern web
+            technologies
           </p>
         </div>
 
@@ -192,8 +193,8 @@ const MyProjectsSection = () => {
               Interested in working together?
             </h3>
             <p className='text-zinc-400 mb-6 max-w-2xl mx-auto'>
-              I'm always excited to take on new challenges and create amazing
-              digital experiences. Let's discuss your next project!
+              I&apos;m always excited to take on new challenges and create
+              amazing digital experiences. Let&apos;s discuss your next project!
             </p>
             <div className='flex flex-col sm:flex-row gap-4 justify-center'>
               <Link

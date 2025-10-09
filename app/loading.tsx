@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 
-const loading = () => {
+const Loading = () => {
   const [currentStep, setCurrentStep] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
@@ -19,7 +19,7 @@ const loading = () => {
     'npm install',
     'const App = () => {}',
     'export default',
-    'console.log("Ready!")',
+    'console.log(&quot;Ready!&quot;)',
     '✨ Welcome!',
   ]
 
@@ -30,7 +30,7 @@ const loading = () => {
     }, 800)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [loadingSteps.length])
 
   return (
     <div
@@ -89,7 +89,7 @@ const loading = () => {
                 <span className='text-blue-400'>loading</span>{' '}
                 <span className='text-zinc-300'>=</span>{' '}
                 <span className='text-orange-400'>
-                  "{codeSnippets[currentStep]}"
+                  &quot;{codeSnippets[currentStep]}&quot;
                 </span>
               </div>
             </div>
@@ -154,4 +154,4 @@ const loading = () => {
   )
 }
 
-export default loading
+export default Loading
