@@ -329,7 +329,7 @@ const Contact = () => {
                   </svg>
                 </a>
                 <a
-                  href='https://linkedin.com/in/philcob-josol'
+                  href='https://www.linkedin.com/in/philcob-suzuki-ba9925387/'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='p-3 bg-slate-700/50 rounded-lg hover:bg-slate-600/50 transition-colors duration-200 group border border-slate-600'
