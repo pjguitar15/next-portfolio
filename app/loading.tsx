@@ -55,7 +55,6 @@ const Loading = () => {
             </div>
           </div>
 
-          {/* Code Content */}
           <div className='p-6 bg-zinc-800'>
             <div className='font-mono text-sm space-y-2'>
               {/* Terminal Prompt */}
