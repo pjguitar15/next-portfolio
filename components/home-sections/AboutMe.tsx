@@ -1,4 +1,5 @@
 "use client";
+import Image from 'next/image'
 import {
   BriefcaseIcon,
   CodeBracketIcon,
@@ -11,21 +12,40 @@ import {
 const AboutMe = () => {
   const experiences = [
     {
-      title: 'Software Engineer - Career Team',
-      company: 'Full-time (North Haven, CT, USA)',
-      period: 'Nov 2024 – Present',
+      title: 'Frontend Developer - 1210 Services Inc.',
+      company: 'Full-time · Hybrid',
+      period: 'Feb 2026 – Present',
+      logoPath: '/1210-logo.png',
+      logoAlt: '1210 Services Inc. logo',
       achievements: [
-        'Design, develop, and maintain software solutions to support business operations and client-facing platforms',
-        'Write clean, efficient, and scalable code following best practices',
-        'Collaborate with designers and product managers to align software features with business goals',
-        'Conduct code reviews and mentor team members to ensure quality and consistency',
-        'Contribute to system architecture decisions and recommend scalability improvements',
+        'Architect and deliver production-ready features in a large-scale Next.js and React frontend',
+        'Build reusable UI components with Material-UI and live CMS data from REST APIs',
+        'Maintain Redux architecture, improve test coverage, and resolve production frontend bugs',
+      ],
+    },
+    {
+      title: 'Software Engineer - Career Team',
+      company: 'Full-time · Remote',
+      period: 'Nov 2024 – Nov 2025',
+      logoPath: '/career-team-logo.jpg',
+      logoAlt: 'Career Team logo',
+      achievements: [
+        'Developed reusable Next.js and TypeScript UI components with REST API integrations for jobseeker and employer workflows',
+        'Implemented NestJS APIs, JWT authentication, AWS S3 uploads, and OpenAI-powered platform features',
+        'Built custom React hooks for data fetching, form logic, and shared state updates across feature modules',
+        'Handled MongoDB aggregation pipelines and integrated reporting data into Domo dashboards',
+        'Deployed features and bug fixes through Azure DevOps pipelines and GitHub Actions workflows',
+        'Investigated frontend defects using Postman to inspect API responses and resolve backend data mismatches',
+        'Contributed to PIRL CSV validation with Python scripts for government system submissions',
+        'Conducted ReactJS technical interviews, code reviews, and mentoring for junior developers',
       ],
     },
     {
       title: 'Web Developer - FFWPU Philippines',
       company: 'Remote',
       period: 'Jan 2024 – Sept 2024',
+      logoPath: '/ffwpu-logo.jpg',
+      logoAlt: 'FFWPU Philippines logo',
       achievements: [
         'Developed and maintained client-facing web applications tailored to organizational needs',
         'Built responsive front-end interfaces to improve accessibility for staff, members, and partners',
@@ -37,6 +57,8 @@ const AboutMe = () => {
       title: 'Software Developer - Comfort Financial Solutions',
       company: 'Las Vegas, NV, USA',
       period: 'Sep 2023 – Jan 2024',
+      logoPath: '/cfs.jpg',
+      logoAlt: 'Comfort Financial Solutions logo',
       achievements: [
         'Developed responsive web interfaces using ReactJS, HTML, CSS, and TypeScript',
         'Collaborated with UX/UI designers to translate mockups into functional applications',
@@ -92,14 +114,27 @@ const AboutMe = () => {
                   key={index}
                   className='bg-zinc-800/50 rounded-xl p-6 border border-zinc-700'
                 >
-                  <div className='flex flex-col md:flex-row md:items-start md:justify-between mb-4'>
-                    <div>
-                      <h3 className='text-lg font-semibold text-zinc-100'>
-                        {exp.title}
-                      </h3>
-                      <p className='text-teal-400 font-medium'>{exp.company}</p>
+                  <div className='flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4'>
+                    <div className='flex items-start gap-4'>
+                      <div className='relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-lg border border-zinc-700 bg-white p-1.5'>
+                        <Image
+                          src={exp.logoPath}
+                          alt={exp.logoAlt}
+                          fill
+                          sizes='48px'
+                          className='object-contain p-1'
+                        />
+                      </div>
+                      <div>
+                        <h3 className='text-lg font-semibold text-zinc-100'>
+                          {exp.title}
+                        </h3>
+                        <p className='text-teal-400 font-medium'>
+                          {exp.company}
+                        </p>
+                      </div>
                     </div>
-                    <div className='flex items-center gap-1 text-sm text-zinc-400 mt-2 md:mt-0'>
+                    <div className='flex items-center gap-1 text-sm text-zinc-400 md:mt-0 md:shrink-0'>
                       <CalendarIcon className='w-4 h-4' />
                       <span>{exp.period}</span>
                     </div>

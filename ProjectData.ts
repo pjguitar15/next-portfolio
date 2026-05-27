@@ -16,6 +16,22 @@ export const allProjects = [
     // githubLink: 'https://github.com/pjguitar15/react-blog-app',
   },
   {
+    title: 'Legato Sounds & Lights',
+    description: `Legato Sounds & Lights is a static marketing website built to help a Cavite-based events supplier showcase sound, lighting, full band rental, and LED wall packages. The site highlights services, package options, client proof, testimonials, and booking calls to action so potential clients can quickly understand the offers and send an inquiry.`,
+    tags: ['NextJS', 'TailwindCSS', 'TypeScript', 'Static Website'],
+    imagePath: '/legato-app.png',
+    projectLink: 'https://www.legatosoundsandlights.com/',
+    githubLink: 'https://github.com/pjguitar15/legato-website',
+  },
+  {
+    title: 'Convert Like A Pro',
+    description: `Convert Like A Pro is an all-in-one conversion tool built for fast, distraction-free calculations. It lets users convert units and currencies, calculate percentages, check BMI, and browse conversion formulas through a clean responsive interface designed for quick answers on desktop and mobile.`,
+    tags: ['NextJS', 'TailwindCSS', 'TypeScript', 'Conversion Tool'],
+    imagePath: '/convert-like-a-pro.png',
+    projectLink: 'https://convertlikeapro.com/',
+    githubLink: 'https://github.com/pjguitar15/convertly',
+  },
+  {
     title: 'DevGuide Blog App',
     description: `DevGuide.Blog is a React based application which is one of my personal project I worked hard for. This app I built allows users two write and publish dev related content on the Internet. One of the features built on this is that, it is fully functional and dynamic. A dashboard is created to allow users configure things such as blog creation, check the analytics, and update their accounts from the settings.`,
     tags: ['ReactJS', 'TailwindCSS', 'TypeScript', 'Firebase'],
