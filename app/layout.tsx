@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
 import Footer from '@/components/Footer'
+import RouteChangeLoader from '@/components/RouteChangeLoader'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import { config } from '@fortawesome/fontawesome-svg-core'
 config.autoAddCss = false
@@ -33,6 +34,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <GlobalContextProvider>
           <Navbar />
+          <RouteChangeLoader />
           {children}
           <Footer />
         </GlobalContextProvider>
