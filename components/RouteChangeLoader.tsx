@@ -1,36 +1,48 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import Loading from '@/app/loading'
 
-const MIN_VISIBLE_MS = 1500
-const FALLBACK_HIDE_MS = 2500
+const MIN_VISIBLE_MS = 2000
+const FALLBACK_HIDE_MS = 5000
 
 const RouteChangeLoader = () => {
+  const router = useRouter()
   const pathname = usePathname()
   const [isLoading, setIsLoading] = useState(false)
   const startedAtRef = useRef(0)
   const fallbackTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const navigationTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const hasStartedRef = useRef(false)
 
   const clearTimers = useCallback(() => {
     if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current)
     if (hideTimerRef.current) clearTimeout(hideTimerRef.current)
+    if (navigationTimerRef.current) clearTimeout(navigationTimerRef.current)
   }, [])
 
-  const startLoading = useCallback(() => {
-    clearTimers()
-    hasStartedRef.current = true
-    startedAtRef.current = Date.now()
-    setIsLoading(true)
+  const startLoading = useCallback(
+    (href?: string) => {
+      clearTimers()
+      hasStartedRef.current = true
+      startedAtRef.current = Date.now()
+      setIsLoading(true)
 
-    fallbackTimerRef.current = setTimeout(() => {
-      setIsLoading(false)
-      hasStartedRef.current = false
-    }, FALLBACK_HIDE_MS)
-  }, [clearTimers])
+      if (href) {
+        navigationTimerRef.current = setTimeout(() => {
+          router.push(href)
+        }, MIN_VISIBLE_MS)
+      }
+
+      fallbackTimerRef.current = setTimeout(() => {
+        setIsLoading(false)
+        hasStartedRef.current = false
+      }, FALLBACK_HIDE_MS)
+    },
+    [clearTimers, router],
+  )
 
   useEffect(() => {
     const handleClick = (event: MouseEvent) => {
@@ -59,7 +71,8 @@ const RouteChangeLoader = () => {
       if (currentPath === nextPath && url.hash) return
       if (currentPath === nextPath) return
 
-      startLoading()
+      event.preventDefault()
+      startLoading(`${url.pathname}${url.search}${url.hash}`)
     }
 
     const handlePopState = () => {
