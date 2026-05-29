@@ -8,6 +8,13 @@ export const allProjects = [
   //   githubLink: "https://github.com/pjguitar15/iltpwebsite",
   // },
   {
+    title: 'Suppla',
+    description: `Suppla is an event supplier discovery platform built to help clients in the Philippines find and connect with trusted suppliers for special occasions. The site supports supplier search, region and category filtering, account access, supplier onboarding paths, and a clean marketplace-style experience for browsing event services like catering, photography, hosts, DJs, and sounds and lights.`,
+    tags: ['NextJS', 'TailwindCSS', 'TypeScript', 'Event Platform'],
+    imagePath: '/suppla.png',
+    projectLink: 'https://suppla-event.vercel.app/',
+  },
+  {
     title: 'FFWPU Philippines',
     description: `FFWPU Philippines is a web application that I built for a church organization client called FFWPU Philippines. It features admin panel that does all the CRUD operations for the content on the main web pages. It has a secured authentication and account registration. Services like email notifications are also integrated for better admin user experience.`,
     tags: ['NextJS', 'TailwindCSS', 'MongoDB', 'TypeScript'],
@@ -22,6 +29,14 @@ export const allProjects = [
     imagePath: '/legato-app.png',
     projectLink: 'https://www.legatosoundsandlights.com/',
     githubLink: 'https://github.com/pjguitar15/legato-website',
+  },
+  {
+    title: 'Namiki English School',
+    description: `Namiki English School is a bilingual marketing website built for an English daycare and eikaiwa client in Tsukuba. The site presents daycare, after-school, and conversation lesson programs, pricing paths, school values, hiring details, testimonials, and contact calls to action so parents can quickly explore the school and book a trial lesson.`,
+    tags: ['NextJS', 'TailwindCSS', 'TypeScript', 'Static Website'],
+    imagePath: '/namiki-english.png',
+    projectLink: 'https://www.namiki-english.com/',
+    githubLink: 'https://github.com/pjguitar15/namiki-school',
   },
   {
     title: 'Convert Like A Pro',

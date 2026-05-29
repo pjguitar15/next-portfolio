@@ -117,19 +117,22 @@ const MyProjectsSection = () => {
                   src={project.imagePath}
                   alt={project.title}
                   fill
-                  className='object-cover transition-transform duration-500 group-hover:scale-110'
+                  className='object-cover object-top transition-transform duration-500 group-hover:scale-110'
                 />
 
-                {/* Overlay */}
+                {/* Bottom readability fade */}
+                <div className='pointer-events-none absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/90 via-black/55 to-transparent' />
+
+                {/* Hover vignette */}
                 <div
-                  className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${
-                    hoveredProject === index ? 'opacity-100' : 'opacity-60'
+                  className={`pointer-events-none absolute inset-0 bg-black transition-opacity duration-300 ${
+                    hoveredProject === index ? 'opacity-10' : 'opacity-0'
                   }`}
                 />
 
                 {/* Action Buttons */}
                 <div
-                  className={`absolute top-4 right-4 flex gap-2 transition-all duration-300 ${
+                  className={`absolute top-4 right-4 z-10 flex gap-2 transition-all duration-300 ${
                     hoveredProject === index
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 -translate-y-2'
@@ -160,7 +163,7 @@ const MyProjectsSection = () => {
                 </div>
 
                 {/* Project Info Overlay */}
-                <div className='absolute bottom-0 left-0 right-0 p-6'>
+                <div className='absolute bottom-0 left-0 right-0 z-10 p-6'>
                   <h3 className='text-white font-bold text-xl mb-2'>
                     {project.title}
                   </h3>
@@ -198,7 +201,7 @@ const MyProjectsSection = () => {
 
                 {/* View Details Button */}
                 <div
-                  className={`absolute bottom-6 right-6 transition-all duration-300 ${
+                  className={`absolute bottom-6 right-6 z-20 transition-all duration-300 ${
                     hoveredProject === index
                       ? 'opacity-100 translate-x-0'
                       : 'opacity-0 translate-x-4'
